@@ -24,7 +24,6 @@ class ExampleUnitTest {
 
         val byteArray = ByteArray(1024)
         val os = ByteArrayOutputStream()
-        var c: Int
 
         do {
             val l = inputStream.read(byteArray)
@@ -51,7 +50,13 @@ class ExampleUnitTest {
         }
 
         println(fontBuffer.size)
+        println(trueTypeFont.glyphCount)
+        println(trueTypeFont.glyphCount?.toUnsignedInt())
 
+        trueTypeFont.glyphIndexs.forEachIndexed { index, glyphIndex ->
+            println("offSet, length = ($index, ${glyphIndex?.offset?.toUnsignedLong()}, ${glyphIndex?.length?.toUnsignedLong()})")
+
+        }
 
         assertEquals(1, 1)
     }

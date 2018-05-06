@@ -23,7 +23,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
         }.toMap()
     }
 
-    val headTable by lazy {
+    val headTable : HeadTable? by lazy {
         val offSet = tables["head"]?.offSet
 
         offSet?.let {
@@ -46,22 +46,64 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
             val glyphDataFormat = buffer.subList(it + 52, it + 54).getShort()
 
             if (version != null && fontRevision != null && checkSumAdjustment != null
-                && magicNumber != null && flags != null && unitsPerEm != null
-                && xMin != null && yMin != null && xMax != null && yMax != null
-                && macStyle != null && lowestRecPPEM != null && fontDirectionHint != null
-                && indexToLocFormat != null && glyphDataFormat != null) {
-            HeadTable(version, fontRevision, checkSumAdjustment,
-                    magicNumber, flags, unitsPerEm,
-                    created, modified,
-                    xMin, yMin, xMax, yMax,
-                    macStyle, lowestRecPPEM,
-                    fontDirectionHint,
-                    indexToLocFormat,
-                    glyphDataFormat)
+                    && magicNumber != null && flags != null && unitsPerEm != null
+                    && xMin != null && yMin != null && xMax != null && yMax != null
+                    && macStyle != null && lowestRecPPEM != null && fontDirectionHint != null
+                    && indexToLocFormat != null && glyphDataFormat != null) {
+
+                HeadTable(version, fontRevision, checkSumAdjustment,
+                        magicNumber, flags, unitsPerEm,
+                        created, modified,
+                        xMin, yMin, xMax, yMax,
+                        macStyle, lowestRecPPEM,
+                        fontDirectionHint,
+                        indexToLocFormat,
+                        glyphDataFormat)
+            } else {
+                null
             }
         }
     }
-p
+
+    val glyphs : List<Glyph?> by lazy {
+        (0 until (glyphCount ?: 0)).map {
+            getGlyphByIndex(it)
+        }
+    }
+
+    val glyphIndexs : List<GlyphIndex?> by lazy {
+        (0 until (glyphCount ?: 0)).map {
+            val offset = getGlyphOffsetByIndex(it)
+            val length = getGlyphLengthByIndex(it)
+
+            if (offset != null && length != null) {
+                GlyphIndex(offset, length)
+            } else {
+                null
+            }
+        }
+    }
+
+    private fun getGlyphByIndex(index: Int) : Glyph? {
+        val offset = getGlyphOffsetByIndex(index)
+        val length = getGlyphLengthByIndex(index)
+        val glyfTable = tables["glyf"]
+
+        if (offset != null && length != null
+                        && glyfTable != null) {
+            return Glyph(buffer.subList(offset, length))
+        }
+
+        return null
+    }
+
+    val glyphCount by lazy {
+        val offset = tables["maxp"]?.offSet
+        offset?.let {
+            buffer.subList(it + 4, it + 6).getShort()
+        }
+    }
+
     private fun getCalendar(start : Int) : Calendar {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis =
@@ -69,6 +111,49 @@ p
                 + (buffer.subList(start + 4, start + 8).getInt()?.toUnsignedLong() ?: 0)
 
         return calendar
+    }
+
+    private fun getGlyphOffsetByIndex(index : Int) : Int? {
+        if (index < 0 || index >= glyphCount ?: 0) {
+            return null
+        }
+
+        val locaOffset = tables["loca"]?.offSet
+
+        return locaOffset?.let {
+            when (headTable?.indexToLocFormat) {
+                1.toShort() -> {
+                    val start = it + index * 4
+                    buffer.subList(start, start + 4).getInt()
+                }
+                else -> {
+                    val start = it + index * 2
+                    buffer.subList(start, start + 2).getShort()?.toUnsignedInt()?.run { this * 2 }
+                }
+            }
+        }
+    }
+
+    private fun getGlyphLengthByIndex(index: Int) : Int? {
+        if (index < 0 || index >= glyphCount ?: 0) {
+            return null
+        }
+
+        val start = getGlyphOffsetByIndex(index)
+        val end = when (index + 1) {
+            glyphCount?.toInt() ?: 0 -> {
+                tables["glyf"]?.length
+            }
+            else -> {
+                getGlyphOffsetByIndex(index + 1)
+            }
+        }
+
+        if (start != null && end != null) {
+            return end - start
+        }
+
+        return null
     }
 }
 
@@ -79,3 +164,7 @@ data class HeadTable(val version : Int, val fontRevision : Int, val checkSumAdju
                      val created : Calendar, val modified : Calendar, val xMin : Short, val yMin : Short,
                      val xMax : Short, val yMax : Short, val macStyle : Short, val lowestRecPPEM : Short,
                      val fontDirectionHint : Short, val indexToLocFormat : Short, val glyphDataFormat : Short)
+
+data class Glyph(val buffer : List<Byte>)
+
+data class GlyphIndex(val offset : Int, val length : Int)
