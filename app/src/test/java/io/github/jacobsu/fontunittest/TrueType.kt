@@ -65,6 +65,79 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
         }
     }
 
+    val cmapTable : CmapTable? by lazy {
+        tables["cmap"]?.offSet?.let { offset ->
+            val version = buffer.subList(offset, offset + 2).getShort()?.toUnsignedInt()
+            val numberSubtables = buffer.subList(offset + 2, offset + 4).getShort()?.toUnsignedInt()
+
+            val subTables : List<CmapSubTable?> = (0 until (numberSubtables ?: 0)).map {
+                val start = offset + 4 + it * 8
+                val platformID = buffer.subList(start, start + 2).getShort()?.toUnsignedInt()
+                val platformSpecificID = buffer.subList(start + 2, start + 4).getShort()?.toUnsignedInt()
+                val subTableOffset = buffer.subList(start + 4, start + 8).getInt()?.toUnsignedLong()
+
+                if (platformID != null && platformSpecificID != null
+                        && subTableOffset != null) {
+                    val subTableStart = (offset + subTableOffset).toInt()
+                    val format = buffer.subList(subTableStart, subTableStart + 2).getShort()?.toUnsignedInt()
+                    val length = buffer.subList(subTableStart + 2, subTableStart + 4).getShort()?.toUnsignedInt()
+                    val language = buffer.subList(subTableStart + 4, subTableStart + 6).getShort()?.toUnsignedInt()
+
+                    when (format) {
+                        4 -> {
+                            val segCountX2 = buffer.subList(subTableStart + 6, subTableStart + 8).getShort()?.toUnsignedInt()
+                            val searchRange = buffer.subList(subTableStart + 8, subTableStart + 10).getShort()?.toUnsignedInt()
+                            val entrySelector = buffer.subList(subTableStart + 10, subTableStart + 12).getShort()?.toUnsignedInt()
+                            val rangeShift = buffer.subList(subTableStart + 12, subTableStart + 14).getShort()?.toUnsignedInt()
+
+                            val endcode : List<Int?> = (0 until (segCountX2 ?: 0)/2).map {
+                                val start = subTableStart + 14 + it * 2
+                                buffer.subList(start, start + 2).getShort()?.toUnsignedInt()
+                            }
+
+                            val reservedPadStart = subTableStart + 14 + (segCountX2 ?: 0)
+                            val reservedPad = buffer.subList(reservedPadStart, reservedPadStart + 2).getShort()?.toUnsignedInt()
+                            val startCode = (0 until (segCountX2 ?: 0)/2).map {
+                                val start = reservedPadStart + 2 + it * 2
+                                buffer.subList(start, start + 2).getShort()?.toUnsignedInt()
+                            }
+
+                            val idDeltaStart = reservedPadStart + 2 + (segCountX2 ?: 0)
+
+                            val idDelta = (0 until (segCountX2 ?: 0) / 2).map {
+                                buffer.subList(idDeltaStart + it * 2, idDeltaStart + 2 + it * 2).getShort()?.toUnsignedInt()
+                            }
+
+                            val idRangeOffsetStart = idDeltaStart + (segCountX2 ?: 0)
+                            val idRangeOffSet = (0 until (segCountX2 ?: 0) / 2).map {
+                                buffer.subList(idRangeOffsetStart + it * 2, idRangeOffsetStart + 2 + it * 2).getShort()?.toUnsignedInt()
+                            }
+
+                            CmapSubTable4(platformID, platformSpecificID, subTableOffset,
+                                    format, length, language,
+                                    segCountX2, searchRange, entrySelector,
+                                    rangeShift, endcode, reservedPad,
+                                    startCode, idDelta, idRangeOffSet)
+
+                        }
+                        else -> {
+                            CmapSubTableUnknown(platformID, platformSpecificID, subTableOffset, format, length)
+                        }
+                    }
+                } else {
+                    null
+                }
+            }
+
+            if (version != null && numberSubtables != null) {
+                CmapTable(version, numberSubtables, subTables)
+            } else {
+                null
+            }
+        }
+
+    }
+
     val glyphs : List<Glyph?> by lazy {
         (0 until (glyphCount ?: 0)).map {
             getGlyphByIndex(it)
@@ -168,3 +241,24 @@ data class HeadTable(val version : Int, val fontRevision : Int, val checkSumAdju
 data class Glyph(val buffer : List<Byte>)
 
 data class GlyphIndex(val offset : Int, val length : Int)
+
+data class CmapTable(val version : Int, val numberSubtables : Int, val subTables : List<CmapSubTable?>)
+
+sealed class CmapSubTable(open val platformID : Int, open val platformSpecificID : Int,
+                        open val offset : Long, open val format : Int?, open val length : Int?)
+
+data class CmapSubTableUnknown(override val platformID : Int, override val platformSpecificID : Int,
+                               override val offset : Long, override val format : Int?,
+                               override val length : Int?) :
+        CmapSubTable(platformID, platformSpecificID, offset, format, length)
+
+data class CmapSubTable4(override val platformID : Int, override val platformSpecificID : Int,
+                         override val offset : Long, override val format : Int?,
+                         override val length : Int?,
+                         val language : Int?, val segCountX2 : Int?, val searchRange : Int?,
+                         val entrySelector : Int?, val rangeShift : Int?,
+                         val endCode : List<Int?>, val reservedPad : Int?,
+                         val startCode : List<Int?>, val idDelta : List<Int?>,
+                         val idRangeOffSet : List<Int?>) :
+        CmapSubTable(platformID, platformSpecificID, offset, format, length)
+

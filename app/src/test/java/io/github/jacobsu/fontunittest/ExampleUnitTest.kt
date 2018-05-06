@@ -58,6 +58,10 @@ class ExampleUnitTest {
 
         }
 
+        trueTypeFont.cmapTable?.let {
+            println("$it")
+        }
+
         assertEquals(1, 1)
     }
 }
