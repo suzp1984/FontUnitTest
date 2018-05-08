@@ -2,6 +2,22 @@ package io.github.jacobsu.fontunittest
 
 import java.nio.charset.Charset
 
+fun <T> List<T>.subListByLength(start : Int, lenght : Int) : List<T> {
+    return subList(start, start + lenght)
+}
+
+fun List<Byte>.getIntFrom(start : Int) : Int? {
+    return subListByLength(start, 4).getInt()
+}
+
+fun List<Byte>.getShortFrom(start : Int) : Short? {
+    return subListByLength(start, 2).getShort()
+}
+
+fun List<Byte>.getStringFrom(start : Int, count: Int) : String? {
+    return subListByLength(start, count).getString(count)
+}
+
 fun List<Byte>.getInt() : Int? {
     if (size < 4) {
         return null

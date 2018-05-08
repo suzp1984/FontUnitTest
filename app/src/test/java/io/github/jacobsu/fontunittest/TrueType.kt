@@ -2,22 +2,20 @@ package io.github.jacobsu.fontunittest
 
 import java.util.*
 
-
 class TrueTypeBuffer(val buffer: List<Byte>) {
-    var pos : Int = 0
-    val scalarType by lazy { buffer.subList(0, 4).getInt() }
-    val numTables  by lazy { buffer.subList(4, 6).getShort() }
-    val searchRange by lazy { buffer.subList(6, 8).getShort() }
-    val entrySelector by lazy { buffer.subList(8, 10).getShort() }
-    val rangeShift by lazy { buffer.subList(10, 12).getShort() }
+    val scalarType by lazy { buffer.getIntFrom(0) }
+    val numTables  by lazy { buffer.getShortFrom(4) }
+    val searchRange by lazy { buffer.getShortFrom(6) }
+    val entrySelector by lazy { buffer.getShortFrom(8) }
+    val rangeShift by lazy { buffer.getShortFrom(10) }
 
     val tables by lazy {
         (0 until (numTables ?: 0)).map {
             val start = 12 + it * 16
-            val tag = buffer.subList(start, start + 4).getString(4)
-            val table = Table(checkSum = buffer.subList(start + 4, start + 8).getInt() ?: 0,
-                                offSet = buffer.subList(start + 8, start + 12).getInt() ?: 0,
-                                length = buffer.subList(start + 12, start + 16).getInt() ?: 0)
+            val tag = buffer.getStringFrom(start, 4)
+            val table = Table(checkSum = buffer.getIntFrom(start + 4) ?: 0,
+                                offSet = buffer.getIntFrom(start + 8) ?: 0,
+                                length = buffer.getIntFrom(start + 12) ?: 0)
 
             tag to table
         }.toMap()
@@ -27,23 +25,23 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
         val offSet = tables["head"]?.offSet
 
         offSet?.let {
-            val version = buffer.subList(it, it + 4).getInt()
-            val fontRevision = buffer.subList(it + 4, it + 8).getInt()
-            val checkSumAdjustment = buffer.subList(it + 8, it + 12).getInt()
-            val magicNumber = buffer.subList(it + 12, it + 16).getInt()
-            val flags = buffer.subList(it + 16, it + 18).getShort()
-            val unitsPerEm = buffer.subList(it + 18, it + 20).getShort()
+            val version = buffer.getIntFrom(it)
+            val fontRevision = buffer.getIntFrom(it + 4)
+            val checkSumAdjustment = buffer.getIntFrom(it + 8)
+            val magicNumber = buffer.getIntFrom(it + 12)
+            val flags = buffer.getShortFrom(it + 16)
+            val unitsPerEm = buffer.getShortFrom(it + 18)
             val created = getCalendar(it + 20)
             val modified = getCalendar(it + 28)
-            val xMin = buffer.subList(it + 36, it + 38).getShort()
-            val yMin = buffer.subList(it + 38, it + 40).getShort()
-            val xMax = buffer.subList(it + 40, it + 42).getShort()
-            val yMax = buffer.subList(it + 42, it + 44).getShort()
-            val macStyle = buffer.subList(it + 44, it + 46).getShort()
-            val lowestRecPPEM = buffer.subList(it + 46, it + 48).getShort()
-            val fontDirectionHint = buffer.subList(it + 48, it + 50).getShort()
-            val indexToLocFormat = buffer.subList(it + 50, it + 52).getShort()
-            val glyphDataFormat = buffer.subList(it + 52, it + 54).getShort()
+            val xMin = buffer.getShortFrom(it + 36)
+            val yMin = buffer.getShortFrom(it + 38)
+            val xMax = buffer.getShortFrom(it + 40)
+            val yMax = buffer.getShortFrom(it + 42)
+            val macStyle = buffer.getShortFrom(it + 44)
+            val lowestRecPPEM = buffer.getShortFrom(it + 46)
+            val fontDirectionHint = buffer.getShortFrom(it + 48)
+            val indexToLocFormat = buffer.getShortFrom(it + 50)
+            val glyphDataFormat = buffer.getShortFrom(it + 52)
 
             if (version != null && fontRevision != null && checkSumAdjustment != null
                     && magicNumber != null && flags != null && unitsPerEm != null
@@ -67,50 +65,55 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
 
     val cmapTable : CmapTable? by lazy {
         tables["cmap"]?.offSet?.let { offset ->
-            val version = buffer.subList(offset, offset + 2).getShort()?.toUnsignedInt()
-            val numberSubtables = buffer.subList(offset + 2, offset + 4).getShort()?.toUnsignedInt()
+            val version = buffer.getShortFrom(offset)?.toUnsignedInt()
+            val numberSubtables = buffer.getShortFrom(offset + 2)?.toUnsignedInt()
 
             val subTables : List<CmapSubTable?> = (0 until (numberSubtables ?: 0)).map {
                 val start = offset + 4 + it * 8
-                val platformID = buffer.subList(start, start + 2).getShort()?.toUnsignedInt()
-                val platformSpecificID = buffer.subList(start + 2, start + 4).getShort()?.toUnsignedInt()
-                val subTableOffset = buffer.subList(start + 4, start + 8).getInt()?.toUnsignedLong()
+                val platformID = buffer.getShortFrom(start)?.toUnsignedInt()
+                val platformSpecificID = buffer.getShortFrom(start + 2)?.toUnsignedInt()
+                val subTableOffset = buffer.getIntFrom(start + 4)?.toUnsignedLong()
 
                 if (platformID != null && platformSpecificID != null
                         && subTableOffset != null) {
                     val subTableStart = (offset + subTableOffset).toInt()
-                    val format = buffer.subList(subTableStart, subTableStart + 2).getShort()?.toUnsignedInt()
-                    val length = buffer.subList(subTableStart + 2, subTableStart + 4).getShort()?.toUnsignedInt()
-                    val language = buffer.subList(subTableStart + 4, subTableStart + 6).getShort()?.toUnsignedInt()
+                    val format = buffer.getShortFrom(subTableStart)?.toUnsignedInt()
+                    val length = buffer.getShortFrom(subTableStart + 2)?.toUnsignedInt()
+                    val language = buffer.getShortFrom(subTableStart + 4)?.toUnsignedInt()
 
                     when (format) {
                         4 -> {
-                            val segCountX2 = buffer.subList(subTableStart + 6, subTableStart + 8).getShort()?.toUnsignedInt()
-                            val searchRange = buffer.subList(subTableStart + 8, subTableStart + 10).getShort()?.toUnsignedInt()
-                            val entrySelector = buffer.subList(subTableStart + 10, subTableStart + 12).getShort()?.toUnsignedInt()
-                            val rangeShift = buffer.subList(subTableStart + 12, subTableStart + 14).getShort()?.toUnsignedInt()
+                            val segCountX2 = buffer.getShortFrom(subTableStart + 6)
+                                                    ?.toUnsignedInt()
+                            val searchRange = buffer.getShortFrom(subTableStart + 8)
+                                                    ?.toUnsignedInt()
+                            val entrySelector = buffer.getShortFrom(subTableStart + 10)
+                                                    ?.toUnsignedInt()
+                            val rangeShift = buffer.getShortFrom(subTableStart + 12)
+                                                    ?.toUnsignedInt()
 
                             val endcode : List<Int?> = (0 until (segCountX2 ?: 0)/2).map {
-                                val start = subTableStart + 14 + it * 2
-                                buffer.subList(start, start + 2).getShort()?.toUnsignedInt()
+                                val endCodeStart = subTableStart + 14 + it * 2
+                                buffer.getShortFrom(endCodeStart)?.toUnsignedInt()
                             }
 
                             val reservedPadStart = subTableStart + 14 + (segCountX2 ?: 0)
-                            val reservedPad = buffer.subList(reservedPadStart, reservedPadStart + 2).getShort()?.toUnsignedInt()
+                            val reservedPad = buffer.getShortFrom(reservedPadStart)?.toUnsignedInt()
                             val startCode = (0 until (segCountX2 ?: 0)/2).map {
-                                val start = reservedPadStart + 2 + it * 2
-                                buffer.subList(start, start + 2).getShort()?.toUnsignedInt()
+                                val codeStart = reservedPadStart + 2 + it * 2
+                                buffer.getShortFrom(codeStart)?.toUnsignedInt()
                             }
 
                             val idDeltaStart = reservedPadStart + 2 + (segCountX2 ?: 0)
 
                             val idDelta = (0 until (segCountX2 ?: 0) / 2).map {
-                                buffer.subList(idDeltaStart + it * 2, idDeltaStart + 2 + it * 2).getShort()?.toUnsignedInt()
+                                buffer.getShortFrom(idDeltaStart + it * 2)?.toUnsignedInt()
                             }
 
                             val idRangeOffsetStart = idDeltaStart + (segCountX2 ?: 0)
                             val idRangeOffSet = (0 until (segCountX2 ?: 0) / 2).map {
-                                buffer.subList(idRangeOffsetStart + it * 2, idRangeOffsetStart + 2 + it * 2).getShort()?.toUnsignedInt()
+                                buffer.getShortFrom(idRangeOffsetStart + it * 2)
+                                        ?.toUnsignedInt()
                             }
 
                             CmapSubTable4(platformID, platformSpecificID, subTableOffset,
@@ -141,7 +144,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
     val glyphCount by lazy {
         val offset = tables["maxp"]?.offSet
         offset?.let {
-            buffer.subList(it + 4, it + 6).getShort()
+            buffer.getShortFrom(it + 4)?.toUnsignedInt()
         }
     }
 
@@ -177,7 +180,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
 
         if (offset != null && length != null
                         && glyfTable != null) {
-            return Glyph(buffer.subList(offset, offset + length))
+            return Glyph(buffer.subListByLength(glyfTable.offSet + offset, length))
         }
 
         return null
@@ -186,8 +189,8 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
     private fun getCalendar(start : Int) : Calendar {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis =
-                (buffer.subList(start, start + 4).getInt()?.toUnsignedLong() ?: 0 * 0x100000000)
-                + (buffer.subList(start + 4, start + 8).getInt()?.toUnsignedLong() ?: 0)
+                (buffer.getIntFrom(start)?.toUnsignedLong() ?: 0 * 0x100000000)
+                + (buffer.getIntFrom(start + 4)?.toUnsignedLong() ?: 0)
 
         return calendar
     }
@@ -203,11 +206,11 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
             when (headTable?.indexToLocFormat) {
                 1.toShort() -> {
                     val start = it + index * 4
-                    buffer.subList(start, start + 4).getInt()
+                    buffer.getIntFrom(start)
                 }
                 else -> {
                     val start = it + index * 2
-                    buffer.subList(start, start + 2).getShort()?.toUnsignedInt()?.run { this * 2 }
+                    buffer.getShortFrom(start)?.toUnsignedInt()?.run { this * 2 }
                 }
             }
         }
@@ -220,7 +223,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
 
         val start = getGlyphOffsetByIndex(index)
         val end = when (index + 1) {
-            glyphCount?.toInt() ?: 0 -> {
+            glyphCount ?: 0 -> {
                 tables["glyf"]?.length
             }
             else -> {

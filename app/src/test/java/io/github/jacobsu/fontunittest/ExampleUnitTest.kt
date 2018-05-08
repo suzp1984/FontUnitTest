@@ -51,10 +51,10 @@ class ExampleUnitTest {
 
         println(fontBuffer.size)
         println(trueTypeFont.glyphCount)
-        println(trueTypeFont.glyphCount?.toUnsignedInt())
+        println(trueTypeFont.glyphCount?.toUnsignedLong())
 
         trueTypeFont.glyphIndexs.forEachIndexed { index, glyphIndex ->
-            println("offSet, length = ($index, ${glyphIndex?.offset?.toUnsignedLong()}, ${glyphIndex?.length?.toUnsignedLong()})")
+            println("index, offSet, length = ($index, ${glyphIndex?.offset?.toUnsignedLong()}, ${glyphIndex?.length?.toUnsignedLong()})")
 
         }
 
