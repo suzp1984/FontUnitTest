@@ -138,6 +138,13 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
 
     }
 
+    val glyphCount by lazy {
+        val offset = tables["maxp"]?.offSet
+        offset?.let {
+            buffer.subList(it + 4, it + 6).getShort()
+        }
+    }
+
     val glyphs : List<Glyph?> by lazy {
         (0 until (glyphCount ?: 0)).map {
             getGlyphByIndex(it)
@@ -157,24 +164,23 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
         }
     }
 
-    private fun getGlyphByIndex(index: Int) : Glyph? {
+    fun getGlyphByUnicode(unicode : Int) : Glyph? {
+        return cmapTable?.subTables?.map {
+            it?.getGlyphIndexByUnicode(unicode)?.run { getGlyphByIndex(this) }
+        }?.firstOrNull { it != null }
+    }
+
+    fun getGlyphByIndex(index: Int) : Glyph? {
         val offset = getGlyphOffsetByIndex(index)
         val length = getGlyphLengthByIndex(index)
         val glyfTable = tables["glyf"]
 
         if (offset != null && length != null
                         && glyfTable != null) {
-            return Glyph(buffer.subList(offset, length))
+            return Glyph(buffer.subList(offset, offset + length))
         }
 
         return null
-    }
-
-    val glyphCount by lazy {
-        val offset = tables["maxp"]?.offSet
-        offset?.let {
-            buffer.subList(it + 4, it + 6).getShort()
-        }
     }
 
     private fun getCalendar(start : Int) : Calendar {
@@ -245,12 +251,18 @@ data class GlyphIndex(val offset : Int, val length : Int)
 data class CmapTable(val version : Int, val numberSubtables : Int, val subTables : List<CmapSubTable?>)
 
 sealed class CmapSubTable(open val platformID : Int, open val platformSpecificID : Int,
-                        open val offset : Long, open val format : Int?, open val length : Int?)
+                        open val offset : Long, open val format : Int?, open val length : Int?) {
+    abstract fun getGlyphIndexByUnicode(unicode : Int) : Int?
+}
 
 data class CmapSubTableUnknown(override val platformID : Int, override val platformSpecificID : Int,
                                override val offset : Long, override val format : Int?,
                                override val length : Int?) :
-        CmapSubTable(platformID, platformSpecificID, offset, format, length)
+        CmapSubTable(platformID, platformSpecificID, offset, format, length) {
+    override fun getGlyphIndexByUnicode(unicode: Int): Int? {
+        return null
+    }
+}
 
 data class CmapSubTable4(override val platformID : Int, override val platformSpecificID : Int,
                          override val offset : Long, override val format : Int?,
@@ -260,5 +272,25 @@ data class CmapSubTable4(override val platformID : Int, override val platformSpe
                          val endCode : List<Int?>, val reservedPad : Int?,
                          val startCode : List<Int?>, val idDelta : List<Int?>,
                          val idRangeOffSet : List<Int?>) :
-        CmapSubTable(platformID, platformSpecificID, offset, format, length)
+        CmapSubTable(platformID, platformSpecificID, offset, format, length) {
+
+    override fun getGlyphIndexByUnicode(unicode: Int): Int? {
+
+        return (0 until (segCountX2 ?: 0) / 2).firstOrNull {
+                (endCode.elementAtOrNull(it) ?: 0) >= unicode &&
+                    (startCode.elementAtOrNull(it) ?: 0) <= unicode
+            }?.let {
+                val start = startCode.elementAtOrNull(it) ?: 0
+                val end = endCode.elementAtOrNull(it) ?: 0
+                val rangeOffset = idRangeOffSet.elementAtOrNull(it) ?: 0
+                val delta = idDelta.elementAtOrNull(it) ?: 0
+
+                return if ((start .. end).contains(unicode) && rangeOffset == 0) {
+                            (delta + unicode) % 65536
+                        } else {
+                            null
+                        }
+            }
+    }
+}
 

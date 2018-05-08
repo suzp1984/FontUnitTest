@@ -62,6 +62,11 @@ class ExampleUnitTest {
             println("$it")
         }
 
+        val glyph1 = trueTypeFont.getGlyphByUnicode(59648)
+        val glyph2 = trueTypeFont.getGlyphByIndex(5)
+
+        assertEquals(glyph1, glyph2)
+
         assertEquals(1, 1)
     }
 }
