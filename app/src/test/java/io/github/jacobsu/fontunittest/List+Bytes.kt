@@ -1,6 +1,7 @@
 package io.github.jacobsu.fontunittest
 
 import java.nio.charset.Charset
+import java.security.MessageDigest
 
 fun <T> List<T>.subListByLength(start : Int, lenght : Int) : List<T> {
     return subList(start, start + lenght)
@@ -62,4 +63,29 @@ fun Byte.toUnsignedInt() : Int {
     val s : Int = (toInt() and (1 shl 31)) ushr 24
 
     return (toInt() and 0x007F) or s
+}
+
+fun ByteArray.getMd5Digest() : ByteArray {
+    return MessageDigest.getInstance("MD5").digest(this)
+}
+
+fun List<Byte>.getMd5Digest() : ByteArray {
+    return toByteArray().getMd5Digest()
+}
+
+fun ByteArray.encodeHex(toLowerCase : Boolean = true) : String {
+    val chars = ('0' .. '9') + if (toLowerCase) {
+        ('a' .. 'f')
+    } else {
+        ('A' .. 'F')
+    }
+
+    return map {
+        "${chars.elementAt((240 and it.toUnsignedInt()) ushr 4)}" +
+                "${chars.elementAt(15 and it.toUnsignedInt())}"
+    }.joinToString(separator = "")
+}
+
+fun List<Byte>.encodeHex(toLowerCase: Boolean) : String {
+    return toByteArray().encodeHex(toLowerCase)
 }

@@ -62,6 +62,11 @@ class ExampleUnitTest {
             println("$it")
         }
 
+        trueTypeFont.glyphs.forEachIndexed { index, glyph ->
+            println("$index: ${glyph?.buffer?.getMd5Digest()?.encodeHex(false)}")
+
+        }
+
         val glyph1 = trueTypeFont.getGlyphByUnicode(59648)
         val glyph2 = trueTypeFont.getGlyphByIndex(5)
 
