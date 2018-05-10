@@ -31,7 +31,7 @@ android {
         }
     }
 
-    sourceSets.test.resources.srcDirs += ["src/main/assets"]
+    sourceSets.test.resources.srcDirs += ["src/main"]
 }
 
 dependencies {

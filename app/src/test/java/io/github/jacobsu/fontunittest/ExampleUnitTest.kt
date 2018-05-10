@@ -20,7 +20,7 @@ class ExampleUnitTest {
     @Test
     fun access_assets() {
 
-        val inputStream : InputStream  = javaClass.classLoader.getResourceAsStream("Font.ttf")
+        val inputStream : InputStream  = javaClass.classLoader.getResourceAsStream("assets/Font.ttf")
 
         val byteArray = ByteArray(1024)
         val os = ByteArrayOutputStream()
@@ -71,6 +71,13 @@ class ExampleUnitTest {
         val glyph2 = trueTypeFont.getGlyphByIndex(5)
 
         assertEquals(glyph1, glyph2)
+
+        assertEquals(1, 1)
+    }
+
+    @Test
+    fun access_xml() {
+
 
         assertEquals(1, 1)
     }
