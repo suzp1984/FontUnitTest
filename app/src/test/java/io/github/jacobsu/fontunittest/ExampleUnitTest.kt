@@ -3,8 +3,10 @@ package io.github.jacobsu.fontunittest
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.w3c.dom.NodeList
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import javax.xml.parsers.DocumentBuilderFactory
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -78,6 +80,55 @@ class ExampleUnitTest {
     @Test
     fun access_xml() {
 
+        val fontInputStream : InputStream  = javaClass.classLoader.getResourceAsStream("res/values/font.xml")
+        val xmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fontInputStream)
+        val fonts : NodeList = xmlDoc.getElementsByTagName("string")
+
+        (0 until fonts.length).forEach {
+            fonts.item(it).also {
+                println("${it.attributes.getNamedItem("name").nodeValue} -> ${it.textContent.toCharArray().first().toInt().toByteList().encodeHex(false)}")
+            }
+        }
+
+        val fontUnicodes : List<FontUnicode> = (0 until fonts.length).map {
+            val node = fonts.item(it)
+            val name = node.attributes.getNamedItem("name").nodeValue
+            val unicode = node.textContent.let {
+                if (it.toCharArray().size == 1) {
+                    it.first().toInt()
+                } else {
+                    null
+                }
+            }
+
+            unicode?.let { FontUnicode(name, unicode) }
+        }.filterNotNull()
+
+
+        val inputStream : InputStream  = javaClass.classLoader.getResourceAsStream("assets/Font.ttf")
+
+        val byteArray = ByteArray(1024)
+        val os = ByteArrayOutputStream()
+
+        do {
+            val l = inputStream.read(byteArray)
+
+            if (l == -1) {
+                break
+            }
+
+            os.write(byteArray, 0, l)
+
+        } while (true)
+
+        val fontBuffer = os.toByteArray().toList()
+
+        val trueTypeFont = TrueTypeBuffer(fontBuffer)
+
+        fontUnicodes.forEachIndexed { index, fontUnicode ->
+            val digest = trueTypeFont.getGlyphByUnicode(fontUnicode.unicode)?.buffer?.getMd5Digest()?.encodeHex()
+            println("$index, ${fontUnicode.name} -> $digest")
+        }
 
         assertEquals(1, 1)
     }

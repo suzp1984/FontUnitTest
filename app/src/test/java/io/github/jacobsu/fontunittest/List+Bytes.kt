@@ -89,3 +89,12 @@ fun ByteArray.encodeHex(toLowerCase : Boolean = true) : String {
 fun List<Byte>.encodeHex(toLowerCase: Boolean) : String {
     return toByteArray().encodeHex(toLowerCase)
 }
+
+fun Int.toByteList() : List<Byte> {
+    val r1 = (this and 0x00FF).toByte()
+    val r2 = ((this and 0x00FF00) ushr 8).toByte()
+    val r3 = ((this and 0x00FF0000) ushr 16).toByte()
+    val r4 = ((this and 0xFF000000.toInt()) ushr 24).toByte()
+
+    return listOf(r4, r3, r2, r1)
+}
