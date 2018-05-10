@@ -1,0 +1,706 @@
+[
+  {
+    "name": "icon_add",
+    "digest": "74d34035599ec9c33bc5ac910499fa04"
+  },
+  {
+    "name": "icon_add_member",
+    "digest": "e08359d745f66dc8c1c4c8c160b2391b"
+  },
+  {
+    "name": "icon_add_team",
+    "digest": "86732c16d0986d7a9727bd2458098e66"
+  },
+  {
+    "name": "icon_airbrake",
+    "digest": "296e1e249487fe1722591aec558aa0f7"
+  },
+  {
+    "name": "icon_arrow",
+    "digest": "603622046bf44d117595a04e4bca5aa7"
+  },
+  {
+    "name": "icon_asana",
+    "digest": "48b03327ce20891764c631fe32c1ef18"
+  },
+  {
+    "name": "icon_at",
+    "digest": "19b1b66a540c8adea8496a6d7930c439"
+  },
+  {
+    "name": "icon_bigplane",
+    "digest": "60d2346f3f414bbe181b7ce6b6a51174"
+  },
+  {
+    "name": "icon_bitbucket",
+    "digest": "12a5f8f9bfd846d71a468db1cd4bade8"
+  },
+  {
+    "name": "icon_box",
+    "digest": "4180e1f8f577ace579ae7d29c95ecce7"
+  },
+  {
+    "name": "icon_calendar",
+    "digest": "ee2238aa735595b2a2851699cfb7bde8"
+  },
+  {
+    "name": "icon_calendar_bold",
+    "digest": "4e74cc465de8d749dfd9769b13e54195"
+  },
+  {
+    "name": "icon_calendar_drawer",
+    "digest": "1cf883c96aea41bd3c8fc13cb4f17b7b"
+  },
+  {
+    "name": "icon_call",
+    "digest": "12b862172fc25ccddc78727427abaaf7"
+  },
+  {
+    "name": "icon_close",
+    "digest": "ce22e58c2693201e6a01138b9bafb2fc"
+  },
+  {
+    "name": "icon_color_circle",
+    "digest": "6c644520806e71f27306c139d22bc700"
+  },
+  {
+    "name": "icon_conference_top_bar",
+    "digest": "7dd76dc30027c611678c2a2b989042ba"
+  },
+  {
+    "name": "icon_contacts",
+    "digest": "010c71169e44452dd333591df51aa823"
+  },
+  {
+    "name": "icon_contacts_filled",
+    "digest": "9d1b982532c751944b6598ed3304e73a"
+  },
+  {
+    "name": "icon_conversation_conference",
+    "digest": "192cff14cbde362240ae734120b73036"
+  },
+  {
+    "name": "icon_conversation_meetings",
+    "digest": "143d6ea24b87fe51c39fdcb7facf80b5"
+  },
+  {
+    "name": "icon_crashlyics",
+    "digest": "0831b034739f56b74a990a3f2e80894e"
+  },
+  {
+    "name": "icon_detail_assignees",
+    "digest": "d03bf3e96a98ffa502da2c32d7e17c71"
+  },
+  {
+    "name": "icon_detail_attach",
+    "digest": "3c421a61cf008b26a99868d21f0266ca"
+  },
+  {
+    "name": "icon_detail_complete",
+    "digest": "96b3833d6734ac3859a68f6eb72f59a8"
+  },
+  {
+    "name": "icon_detail_description",
+    "digest": "55d1e542580787bf9a40d2e5c7f1d774"
+  },
+  {
+    "name": "icon_detail_due",
+    "digest": "1cf883c96aea41bd3c8fc13cb4f17b7b"
+  },
+  {
+    "name": "icon_detail_duration",
+    "digest": "f001db00415cd823ba69698038516e5a"
+  },
+  {
+    "name": "icon_detail_edit",
+    "digest": "f5d9281036d5095d110de3a6c51e0f2f"
+  },
+  {
+    "name": "icon_detail_location",
+    "digest": "bef105884368284dd6ce033c95aa063e"
+  },
+  {
+    "name": "icon_detail_repeat",
+    "digest": "3a34e56099dba092264aac8db202285b"
+  },
+  {
+    "name": "icon_detail_section",
+    "digest": "fd70685af9983d64c12cb54b30b08bf1"
+  },
+  {
+    "name": "icon_done",
+    "digest": "fe86dcd86ec7abefa7e173eef529edfa"
+  },
+  {
+    "name": "icon_donedone",
+    "digest": "b8508310350268a5840d6bab7b8c972d"
+  },
+  {
+    "name": "icon_download",
+    "digest": "52a4792e2909c34691a3d5531e610be7"
+  },
+  {
+    "name": "icon_dropbox",
+    "digest": "ca7032f94850146d6329270b907ed0a5"
+  },
+  {
+    "name": "icon_evernote",
+    "digest": "4a5fb7ad1937863ded0b00d58d8e4296"
+  },
+  {
+    "name": "icon_file",
+    "digest": "3c421a61cf008b26a99868d21f0266ca"
+  },
+  {
+    "name": "icon_file_bold",
+    "digest": "3c421a61cf008b26a99868d21f0266ca"
+  },
+  {
+    "name": "icon_gif",
+    "digest": "e1d917d8843871ba4775a7410a3176cc"
+  },
+  {
+    "name": "icon_github",
+    "digest": "f9767d76128d6eb74bc199721cf79a8b"
+  },
+  {
+    "name": "icon_glipwebhooks",
+    "digest": "58c88d0c30c81bda27a1fe49c5a683fb"
+  },
+  {
+    "name": "icon_googledrive",
+    "digest": "d4339a8aed8ed75d07f6a6d9565db8c4"
+  },
+  {
+    "name": "icon_group_avatar",
+    "digest": "d129b2ea5ab949be2169aa7c67a9d0a1"
+  },
+  {
+    "name": "icon_phone",
+    "digest": "12b862172fc25ccddc78727427abaaf7"
+  },
+  {
+    "name": "icon_hangouts",
+    "digest": "88c80a98577c8d04a629860dabc739a6"
+  },
+  {
+    "name": "icon_harvest",
+    "digest": "0d7ff77b07a0041171acad94bc19fb81"
+  },
+  {
+    "name": "icon_info",
+    "digest": "3257310c2e279926dc90d608ba756634"
+  },
+  {
+    "name": "icon_info_a",
+    "digest": "07f95d8434591d378a1903123279b1f2"
+  },
+  {
+    "name": "icon_integration",
+    "digest": "2b104509cdac93767fcb646e4307d0be"
+  },
+  {
+    "name": "icon_item_camera",
+    "digest": "974383873fe5ae2febe0c5ba78baa05c"
+  },
+  {
+    "name": "icon_item_file",
+    "digest": "3c421a61cf008b26a99868d21f0266ca"
+  },
+  {
+    "name": "icon_item_photo",
+    "digest": "60dc511bf14556c82179814556376b7c"
+  },
+  {
+    "name": "icon_item_repeat",
+    "digest": "f1b03e2cc2582b8c8fc5afccbf010ab0"
+  },
+  {
+    "name": "icon_jira",
+    "digest": "2f22b2395120903fc5c20f6684718c1e"
+  },
+  {
+    "name": "icon_link",
+    "digest": "32055a62dcfa53c249477916e3d4bb5a"
+  },
+  {
+    "name": "icon_link_bold",
+    "digest": "32055a62dcfa53c249477916e3d4bb5a"
+  },
+  {
+    "name": "icon_mailchimp",
+    "digest": "65fe8975819b35b95da56939e004bf27"
+  },
+  {
+    "name": "icon_meetings",
+    "digest": "2a2b1de67f926fcf5793946b8af038a5"
+  },
+  {
+    "name": "icon_mentioned",
+    "digest": "5a51987a4e8e07f71fb2f18d67341301"
+  },
+  {
+    "name": "icon_message",
+    "digest": "9c87906da6d560e994ab2775f23ce1f1"
+  },
+  {
+    "name": "icon_message_filled",
+    "digest": "a11d42691704010b7fdf79394540a0f3"
+  },
+  {
+    "name": "icon_more",
+    "digest": "5cbf495c918e1fae94f4538301f30f1c"
+  },
+  {
+    "name": "icon_new_message",
+    "digest": "33f7903b1ca0ebf65db306ac8644151a"
+  },
+  {
+    "name": "icon_back",
+    "digest": "69c6c3a4fc466d815c0f2f42b66b6a07"
+  },
+  {
+    "name": "icon_next",
+    "digest": "1aca88444a0838a5db06a87f0f144f40"
+  },
+  {
+    "name": "icon_next_2",
+    "digest": "fb355930abd3b5e30fadb118c34f45b0"
+  },
+  {
+    "name": "icon_normal_file",
+    "digest": "3c421a61cf008b26a99868d21f0266ca"
+  },
+  {
+    "name": "icon_note",
+    "digest": "b5dd197eb34216ae158e7b3075d7d1b4"
+  },
+  {
+    "name": "icon_note_bold",
+    "digest": "2c92a44baad7a018dfe772cb55a3e577"
+  },
+  {
+    "name": "icon_onedrive",
+    "digest": "287477c62765e22149d3a5ff3943be6d"
+  },
+  {
+    "name": "icon_pagerduty",
+    "digest": "aa3efff8768dd196fdadade7e36826b3"
+  },
+  {
+    "name": "icon_person",
+    "digest": "d03bf3e96a98ffa502da2c32d7e17c71"
+  },
+  {
+    "name": "icon_photo_library",
+    "digest": "76158cb435112055534bc11ec78a3b77"
+  },
+  {
+    "name": "icon_pivotal_tracker",
+    "digest": "41cb5e7f4d52d85c80e3480497bf88e9"
+  },
+  {
+    "name": "icon_like_post",
+    "digest": "23f7a44e17ea669255a089772c10403b"
+  },
+  {
+    "name": "icon_me_like_post",
+    "digest": "3254c5441c1305a5cea665ef512ed784"
+  },
+  {
+    "name": "icon_remove",
+    "digest": "2c77e4ba497a9a4e7101b965deda8615"
+  },
+  {
+    "name": "icon_retry",
+    "digest": "890227b21e1dbf2e655a203a9ec91c19"
+  },
+  {
+    "name": "icon_search",
+    "digest": "7a8015dec21d86e2ab640f7d38b22bfd"
+  },
+  {
+    "name": "icon_send",
+    "digest": "60d2346f3f414bbe181b7ce6b6a51174"
+  },
+  {
+    "name": "icon_settings",
+    "digest": "9cd0646b554a4ac316c375714285dab1"
+  },
+  {
+    "name": "icon_settings_filled",
+    "digest": "064669d006d0d91fe7d55fd82b5f29e4"
+  },
+  {
+    "name": "icon_settings_helpshift",
+    "digest": "cb5e5b61af954c9c34d75824ad8950b1"
+  },
+  {
+    "name": "icon_single_avatar",
+    "digest": "c5f15cfddb698c1dd754e2ec778349d1"
+  },
+  {
+    "name": "icon_contact",
+    "digest": "9dd5e1cbd2cdc85b240bdece2b549888"
+  },
+  {
+    "name": "icon_security",
+    "digest": "7e8aa1fa59843abb1432792eb0634b11"
+  },
+  {
+    "name": "icon_stripe",
+    "digest": "325cdd8fc84167cafb8f678b8a3207ce"
+  },
+  {
+    "name": "icon_task",
+    "digest": "89837fd40979c6e7e7cd695547fe972d"
+  },
+  {
+    "name": "icon_task_bold",
+    "digest": "d9a4eb9162024eb9d0d1f80c133ef0b1"
+  },
+  {
+    "name": "icon_task_complete",
+    "digest": "6fb16d766a3f0aed76199f4dda7ba6f5"
+  },
+  {
+    "name": "icon_task_complete_bold",
+    "digest": "800a24767201f66a11e98657a89500fe"
+  },
+  {
+    "name": "icon_task_filled",
+    "digest": "ad5573e79b17009ee2012e07afe0c168"
+  },
+  {
+    "name": "icon_team",
+    "digest": "3723ebab06a3b848cdb1db834b70e2f9"
+  },
+  {
+    "name": "icon_team_avatar",
+    "digest": "23218fad83c2517ff1417c5ad93e4b0f"
+  },
+  {
+    "name": "icon_trello",
+    "digest": "dc5a82dfa51e8b7c8b21279db7218dca"
+  },
+  {
+    "name": "icon_warning",
+    "digest": "85e9237acc3ba7540e49862b40475722"
+  },
+  {
+    "name": "icon_zapier",
+    "digest": "207b6d9276115947ba42331ea4e291ef"
+  },
+  {
+    "name": "icon_zendesk",
+    "digest": "4d91bddf8416bdc4d0711e53254fce75"
+  },
+  {
+    "name": "icon_arrowup",
+    "digest": "ce245ef1acf66e7669996d746a7acf54"
+  },
+  {
+    "name": "icon_salesforce",
+    "digest": "b9ee1174bc03547fa9bcce6ba0352078"
+  },
+  {
+    "name": "icon_plus",
+    "digest": "6d9de561371a6dff334a0fc8b50352bb"
+  },
+  {
+    "name": "icon_emailadd",
+    "digest": "cdb1703cac6ce24a71280a5d07d3fa4d"
+  },
+  {
+    "name": "icon_moreadd",
+    "digest": "2c3cad05bced023a8c935086824716de"
+  },
+  {
+    "name": "icon_smsadd",
+    "digest": "897f1969bf8875a8cdc1ad816e26b62a"
+  },
+  {
+    "name": "icon_zipicon",
+    "digest": "e97e368425ce3611784c5b0651a03346"
+  },
+  {
+    "name": "icon_defaultfileicon",
+    "digest": "ea503048e8fb4194631b48a08376d3bf"
+  },
+  {
+    "name": "icon_videoicon",
+    "digest": "b4e2d6239f3e653728b1521790f98eed"
+  },
+  {
+    "name": "icon_audioicon",
+    "digest": "c8249933800b2d8101cd522d454f4742"
+  },
+  {
+    "name": "icon_cancel",
+    "digest": "6fdf94038be2ede56ee15e8a9763ca70"
+  },
+  {
+    "name": "icon_play",
+    "digest": "f414da005ed4d619f16af4783cd51d32"
+  },
+  {
+    "name": "icon_pause",
+    "digest": "ed01b4851e535a1c38171f325b42b9c3"
+  },
+  {
+    "name": "icon_internal_for_vm",
+    "digest": "496cf30aee1bfabbd661d32caee3869a"
+  },
+  {
+    "name": "icon_speaker_for_vm",
+    "digest": "beaf1df269b810acfc94b46d6b251490"
+  },
+  {
+    "name": "icon_bluetooth_for_vm",
+    "digest": "b2e5f06bad4a4071c833d881dff38c84"
+  },
+  {
+    "name": "icon_earphone_for_vm",
+    "digest": "cf6dcae672d27cc2a37a9cf3d9b2a9a1"
+  },
+  {
+    "name": "icon_headset_for_vm",
+    "digest": "429f42736985a207dc2af9e5b2f2f3eb"
+  },
+  {
+    "name": "icon_multi_phone",
+    "digest": "e38131bfbddcd4a071bcdec6329f4fe5"
+  },
+  {
+    "name": "icon_multi_bluetooth",
+    "digest": "d32702a0794a2161b1ea957b4835d1c1"
+  },
+  {
+    "name": "icon_multi_speaker",
+    "digest": "9d51d14b3a9b032aafb64d06751ffccd"
+  },
+  {
+    "name": "icon_multi_earphone",
+    "digest": "d75ab006ad0199d68f03b3b41eab6c7c"
+  },
+  {
+    "name": "icon_call_cancelled",
+    "digest": "065f0541cd08cbd9f29673d31e8f91d9"
+  },
+  {
+    "name": "icon_call_inbound",
+    "digest": "785d1d4ed278e1bdebe5b4a6731d11d5"
+  },
+  {
+    "name": "icon_call_outbound",
+    "digest": "ea7150242f4793b3917c0aceb6526557"
+  },
+  {
+    "name": "icon_call_voicemail",
+    "digest": "0d05d4dad2fd1130e7e314693a55439e"
+  },
+  {
+    "name": "icon_call_missedcall",
+    "digest": "1b9c6e528727efa9823bbdbb98916947"
+  },
+  {
+    "name": "icon_home",
+    "digest": "47ead1802b93b857f951ca9e3e2676fc"
+  },
+  {
+    "name": "icon_add_number",
+    "digest": "d45437e26fe26b170a44842dd83ddf03"
+  },
+  {
+    "name": "icon_delete",
+    "digest": "9f6d1977a39616f7ba28eab5c7b752bd"
+  },
+  {
+    "name": "icon_keypad",
+    "digest": "6a2429649cc80a7f6f3971db05e414ee"
+  },
+  {
+    "name": "icon_new_call",
+    "digest": "158a8945fec11d69f0a07b9d4b85bc04"
+  },
+  {
+    "name": "icon_new_sms",
+    "digest": "a11d42691704010b7fdf79394540a0f3"
+  },
+  {
+    "name": "icon_new_fax",
+    "digest": "74b04420e383b586baba6d3408e61743"
+  },
+  {
+    "name": "icon_flip",
+    "digest": "a5e08c55954d9ff583c5115bd08e23e5"
+  },
+  {
+    "name": "icon_transfer",
+    "digest": "b73ad6601c761a4c0245d9abead3030d"
+  },
+  {
+    "name": "icon_hold",
+    "digest": "93626de518725da55fd238bea8876081"
+  },
+  {
+    "name": "icon_park",
+    "digest": "55bfa85e64d28bd4442ea75dbea98c95"
+  },
+  {
+    "name": "icon_record",
+    "digest": "d2a3c6944adaf5e08cff277371a128c6"
+  },
+  {
+    "name": "icon_stop_record",
+    "digest": "55915b1a16c30962cf740e70b902d404"
+  },
+  {
+    "name": "icon_switch_to_carrier",
+    "digest": "08a454f3685b3a21fa692ab4947e0f6f"
+  },
+  {
+    "name": "icon_speaker_for_call",
+    "digest": "beaf1df269b810acfc94b46d6b251490"
+  },
+  {
+    "name": "icon_bluetooth_for_call",
+    "digest": "b2e5f06bad4a4071c833d881dff38c84"
+  },
+  {
+    "name": "icon_headset",
+    "digest": "cf6dcae672d27cc2a37a9cf3d9b2a9a1"
+  },
+  {
+    "name": "icon_mute",
+    "digest": "77eac0f0fbf852896d6174cdf8299b29"
+  },
+  {
+    "name": "icon_unmute",
+    "digest": "541fca18daf64c7f52187a43dc79f8a4"
+  },
+  {
+    "name": "icon_action_undo",
+    "digest": "637c431d91f05ebd90c30367a2a200ed"
+  },
+  {
+    "name": "icon_action_redo",
+    "digest": "d2ea509e281f85ee5406d09fcf6f1238"
+  },
+  {
+    "name": "icon_action_bold",
+    "digest": "1088afc3ed5d066927220eef086eb028"
+  },
+  {
+    "name": "icon_action_italic",
+    "digest": "5175a089fef1371b011cad0299af095c"
+  },
+  {
+    "name": "icon_action_indent",
+    "digest": "e68aa48bf1cee74390ecb881d11ea395"
+  },
+  {
+    "name": "icon_action_outdent",
+    "digest": "19bfed114055d41793bfa7a89c642d30"
+  },
+  {
+    "name": "icon_action_unorderlist",
+    "digest": "39e9abe341e8abe9190c1fcbbe12bca7"
+  },
+  {
+    "name": "icon_action_orderlist",
+    "digest": "67faa1e0e94f5105336ec8c695dd240d"
+  },
+  {
+    "name": "icon_action_underline",
+    "digest": "e90fd87a35b580236bf337b7683b4cda"
+  },
+  {
+    "name": "icon_edit_clear",
+    "digest": "69480c9c02737e9f06afb64cac073dc1"
+  },
+  {
+    "name": "icon_due_time",
+    "digest": "ebc545abbb5b50d200749748e26c28c0"
+  },
+  {
+    "name": "icon_conversation_invite",
+    "digest": "9c87906da6d560e994ab2775f23ce1f1"
+  },
+  {
+    "name": "icon_in_favorite",
+    "digest": "4dfa7f970d9fcd5994f4a677e0619795"
+  },
+  {
+    "name": "icon_not_favorite",
+    "digest": "aa2c15c3dd9d80032a2d868f810abc54"
+  },
+  {
+    "name": "icon_settings_group",
+    "digest": "064669d006d0d91fe7d55fd82b5f29e4"
+  },
+  {
+    "name": "icon_public",
+    "digest": "be3c51b50f7b03c2168de91cb0822848"
+  },
+  {
+    "name": "icon_private",
+    "digest": "49dea123912257fae6252a81a44aec36"
+  },
+  {
+    "name": "icon_join_now_drawer",
+    "digest": "8a0fe482229fa94d0e850b9995388c96"
+  },
+  {
+    "name": "icon_join_now_event_reply",
+    "digest": "cd729de458999c49b06d4418e6b60171"
+  },
+  {
+    "name": "icon_detail_view",
+    "digest": "04e241f4c7432f7088794b14448c0dad"
+  },
+  {
+    "name": "icon_location",
+    "digest": "bef105884368284dd6ce033c95aa063e"
+  },
+  {
+    "name": "icon_paste",
+    "digest": "c3f81cff91f6a802b9d0517a3a2743d9"
+  },
+  {
+    "name": "icon_backward",
+    "digest": "05763e80812d07a207d63e19f2fe86ea"
+  },
+  {
+    "name": "icon_forward",
+    "digest": "2b9ebf7dc33f73ea3b45e551cca81f74"
+  },
+  {
+    "name": "icon_mark_read",
+    "digest": "03ff982b5321b01dded7a1414f58b3b1"
+  },
+  {
+    "name": "icon_share",
+    "digest": "17176d07a1ef4b93f7c5ad98e057e193"
+  },
+  {
+    "name": "icon_account_set_up_company",
+    "digest": "3710d4c21c05997d4ce69462ad808e51"
+  },
+  {
+    "name": "icon_account_set_up_name",
+    "digest": "9dd5e1cbd2cdc85b240bdece2b549888"
+  },
+  {
+    "name": "icon_account_set_up_password",
+    "digest": "49dea123912257fae6252a81a44aec36"
+  },
+  {
+    "name": "icon_me_conversation",
+    "digest": "274d54fb09581530a5ab7f6e7a7f80c2"
+  },
+  {
+    "name": "icon_mute_notifications",
+    "digest": "cd271322d1b1fc71e16e4b61a405df2a"
+  }
+]
