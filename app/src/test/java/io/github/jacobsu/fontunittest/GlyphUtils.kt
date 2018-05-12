@@ -89,6 +89,12 @@ class GlyphUtils {
 
         fontDigests.forEachIndexed { index, fontDigest ->
             println("$index, ${fontDigest.name} -> ${fontDigest.digest}")
+            val fontUnicode = fontUnicodes.filter { it.name == fontDigest.name }
+            Assert.assertEquals(1, fontUnicode.size)
+
+            val glyph = trueTypeFont.getGlyphByUnicode(fontUnicode.first().unicode)
+            Assert.assertEquals(true, glyph != null)
+            Assert.assertEquals(fontDigest.digest, glyph?.buffer?.getMd5Digest()?.encodeHex())
         }
     }
 }

@@ -86,7 +86,7 @@ fun ByteArray.encodeHex(toLowerCase : Boolean = true) : String {
     }.joinToString(separator = "")
 }
 
-fun List<Byte>.encodeHex(toLowerCase: Boolean) : String {
+fun List<Byte>.encodeHex(toLowerCase: Boolean = true) : String {
     return toByteArray().encodeHex(toLowerCase)
 }
 
@@ -97,4 +97,8 @@ fun Int.toByteList() : List<Byte> {
     val r4 = ((this and 0xFF000000.toInt()) ushr 24).toByte()
 
     return listOf(r4, r3, r2, r1)
+}
+
+fun Int.encodeHex(toLowerCase: Boolean = true) : String {
+    return toByteList().encodeHex(toLowerCase)
 }
