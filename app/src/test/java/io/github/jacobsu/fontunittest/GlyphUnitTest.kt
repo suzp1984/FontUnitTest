@@ -99,6 +99,10 @@ class GlyphUnitTest {
                 trueTypeFont.glyphCount,
                 equalTo(trueTypeFont.glyphIndexedOffsets.size))
 
+        (0 until (trueTypeFont.glyphCount ?: 0)).forEach {
+            println("$it : ${trueTypeFont.getGlyphUnicodesByIndex(it).map { it.encodeHex().trimStartWithoutEmptyIt('0', minLength = 4) }}")
+        }
+
     }
 
     @Test

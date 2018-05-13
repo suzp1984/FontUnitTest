@@ -113,3 +113,11 @@ fun String.decodeHex() : Int? {
         (r shl 4) or t
     }
 }
+
+fun String.trimStartWithoutEmptyIt(vararg chars: Char, minLength : Int = 1) : String {
+    return if (length > minLength) {
+        substring(0, length - minLength).trimStart { it in chars } + substring(length - minLength, length)
+    } else {
+        this
+    }
+}

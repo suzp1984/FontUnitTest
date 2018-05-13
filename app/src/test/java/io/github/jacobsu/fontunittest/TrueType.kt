@@ -194,6 +194,12 @@ class TrueTypeFont(private val buffer: List<Byte>) {
         return null
     }
 
+    fun getGlyphUnicodesByIndex(index: Int) : Set<Int> {
+        return cmapTable?.subTables?.map {
+            it.getGlyphUnicodesByIndex(index)
+        }?.flatMap { it }?.toSet() ?: emptySet()
+    }
+
     private fun getCalendar(start : Int) : Calendar {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis =
@@ -264,6 +270,7 @@ data class CmapTable(val version : Int, val numberSubtables : Int, val subTables
 sealed class CmapSubTable(open val platformID : Int, open val platformSpecificID : Int,
                         open val offset : Long, open val format : Int?, open val length : Int?) {
     abstract fun getGlyphIndexByUnicode(unicode : Int) : Int?
+    abstract fun getGlyphUnicodesByIndex(index : Int) : List<Int>
 }
 
 data class CmapSubTableUnknown(override val platformID : Int, override val platformSpecificID : Int,
@@ -272,6 +279,10 @@ data class CmapSubTableUnknown(override val platformID : Int, override val platf
         CmapSubTable(platformID, platformSpecificID, offset, format, length) {
     override fun getGlyphIndexByUnicode(unicode: Int): Int? {
         return null
+    }
+
+    override fun getGlyphUnicodesByIndex(index: Int): List<Int> {
+        return emptyList()
     }
 }
 
@@ -296,12 +307,41 @@ data class CmapSubTable4(override val platformID : Int, override val platformSpe
                 val rangeOffset = idRangeOffSet.elementAtOrNull(it) ?: 0
                 val delta = idDelta.elementAtOrNull(it) ?: 0
 
-                return if ((start .. end).contains(unicode) && rangeOffset == 0) {
+                if ((start .. end).contains(unicode) && rangeOffset == 0) {
                             (delta + unicode) % 65536
                         } else {
                             null
                         }
             }
+    }
+
+    override fun getGlyphUnicodesByIndex(index: Int): List<Int> {
+
+        data class IndexTable(val start : Int, val end : Int, val delta : Int) {
+            fun getUnicodeByIndex(index: Int) : Int? {
+                val indexStart = (delta + start) % 65536
+                val indexEnd   = (delta + end) % 65536
+
+                return if (indexEnd >= indexStart && (indexStart .. indexEnd).contains(index)) {
+                            start + index - indexStart
+                        } else {
+                            null
+                        }
+            }
+        }
+
+        return (0 until segCountX2 / 2).mapNotNull {
+            val start = startCode.elementAtOrNull(it) ?: 0
+            val end = endCode.elementAtOrNull(it) ?: 0
+            val rangeOffset = idRangeOffSet.elementAtOrNull(it) ?: 0
+            val delta = idDelta.elementAtOrNull(it) ?: 0
+
+            if (rangeOffset == 0) {
+                IndexTable(start, end, delta)
+            } else {
+                null
+            }
+        }.mapNotNull { it.getUnicodeByIndex(index) }
     }
 }
 
