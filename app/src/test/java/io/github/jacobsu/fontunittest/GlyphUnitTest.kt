@@ -98,11 +98,6 @@ class GlyphUnitTest {
         collector.checkThat("check TrueType's glyph count",
                 trueTypeFont.glyphCount,
                 equalTo(trueTypeFont.glyphIndexedOffsets.size))
-
-        (0 until (trueTypeFont.glyphCount ?: 0)).forEach {
-            println("$it : ${trueTypeFont.getGlyphUnicodesByIndex(it).map { it.encodeHex().trimStartWithoutEmptyIt('0', minLength = 4) }}")
-        }
-
     }
 
     @Test
@@ -117,9 +112,13 @@ class GlyphUnitTest {
 
                 redundencyNames += sameUnicodes.map { it.name }
 
-                collector.checkThat("check duplicated fonts with same unicode in xml: ${xmlFontUnicodes[it].unicode.encodeHex()}) ->" +
-                        " ${sameUnicodes.map { it.name }.plus(xmlFontUnicodes[it].name).joinToString(separator = ", ", prefix = "[", postfix = "]")}",
-                        true, equalTo(sameUnicodes.isEmpty()))
+                collector.checkThat("check duplicated fonts with same unicode in xml: " +
+                        "${xmlFontUnicodes[it].unicode.encodeHex()}) ->" +
+                        " ${sameUnicodes.map { it.name }
+                                .plus(xmlFontUnicodes[it].name)
+                                .joinToString(separator = ", ", prefix = "[", postfix = "]")}",
+                        true,
+                        equalTo(sameUnicodes.isEmpty()))
             }
         }
     }
@@ -146,9 +145,10 @@ class GlyphUnitTest {
                 redundencyIndex += sameGlyphs.map { it.index }
 
                 collector.checkThat("check ttf redundency digest ${glyphs[index].buffer.getMd5Digest().encodeHex()}, " +
-                        sameGlyphs.map { "${it.index}" }
-                                .plus(index.toString())
-                                .sortedBy { it.toInt() }
+                        sameGlyphs
+                                .plus(glyphs[index])
+                                .sortedBy { it.index }
+                                .map { "${it.index}: ${it.unicodes.map { it.encodeHex().trimStartWithoutEmptyIt('0', minLength = 4) }}" }
                                 .joinToString(separator = ", ", prefix = "[", postfix = "]"),
                         true,
                         equalTo(sameGlyphs.isEmpty()))
