@@ -180,7 +180,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
 
         if (offset != null && length != null
                         && glyfTable != null) {
-            return Glyph(buffer.subListByLength(glyfTable.offSet + offset, length))
+            return Glyph(index, buffer.subListByLength(glyfTable.offSet + offset, length))
         }
 
         return null
@@ -247,7 +247,7 @@ data class HeadTable(val version : Int, val fontRevision : Int, val checkSumAdju
                      val xMax : Short, val yMax : Short, val macStyle : Short, val lowestRecPPEM : Short,
                      val fontDirectionHint : Short, val indexToLocFormat : Short, val glyphDataFormat : Short)
 
-data class Glyph(val buffer : List<Byte>)
+data class Glyph(val index : Int, val buffer : List<Byte>)
 
 data class GlyphIndex(val offset : Int, val length : Int)
 

@@ -96,15 +96,26 @@ class GlyphUnitTest {
 
     @Test
     fun testTTFRedundency() {
+        var redundencyIndex = listOf<Int>()
+
         val glyphs = trueTypeFont.glyphs.filterNotNull()
         (0 until glyphs.size - 1).forEach { index ->
-            val sameGlyphs = glyphs.subList(index + 1, glyphs.size - 1).filter { glyph ->
-                glyph.buffer == glyphs[index].buffer
-            }
+            if (!redundencyIndex.contains(index)) {
 
-            collector.checkThat("check ttf redundency at index $index, digest ${glyphs[index].buffer.getMd5Digest().encodeHex()}",
-                    true,
-                    equalTo(sameGlyphs.isEmpty()))
+                val sameGlyphs = glyphs.subList(index + 1, glyphs.size - 1).filter { glyph ->
+                    glyph.buffer == glyphs[index].buffer
+                }
+
+                redundencyIndex += sameGlyphs.map { it.index }
+
+                collector.checkThat("check ttf redundency digest ${glyphs[index].buffer.getMd5Digest().encodeHex()}, " +
+                        sameGlyphs.map { "${it.index}" }
+                                .plus(index.toString())
+                                .sortedBy { it.toInt() }
+                                .joinToString(separator = ", ", prefix = "[", postfix = "]"),
+                        true,
+                        equalTo(sameGlyphs.isEmpty()))
+            }
         }
     }
 
