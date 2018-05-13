@@ -14,11 +14,10 @@ import org.junit.rules.ErrorCollector
 import org.junit.Rule
 
 
-
 class GlyphUnitTest {
-    lateinit var trueTypeFont : TrueTypeFont
-    lateinit var xmlFontUnicodes : List<FontUnicode>
-    lateinit var fontDigests : List<FontDigest>
+    private lateinit var trueTypeFont : TrueTypeFont
+    private lateinit var xmlFontUnicodes : List<FontUnicode>
+    private lateinit var fontDigests : List<FontDigest>
 
     @Rule @JvmField
     val collector = ErrorCollector()
@@ -52,7 +51,7 @@ class GlyphUnitTest {
         val xmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fontInputStream)
         val fonts : NodeList = xmlDoc.getElementsByTagName("string")
 
-        xmlFontUnicodes = (0 until fonts.length).map {
+        xmlFontUnicodes = (0 until fonts.length).mapNotNull {
             val node = fonts.item(it)
             val name = node.attributes.getNamedItem("name").nodeValue
             val unicode = node.textContent.let {
@@ -64,15 +63,15 @@ class GlyphUnitTest {
             }
 
             unicode?.let { FontUnicode(name, unicode) }
-        }.filterNotNull()
+        }
     }
 
     @Before
     fun readFontDigestFromJson() {
         val fontInputStream : InputStream  = javaClass.classLoader.getResourceAsStream("assets/font_digest.json")
-        val gson = Gson()
+        val digestJson = Gson()
 
-        fontDigests = gson.fromJson(InputStreamReader(fontInputStream), object : TypeToken<List<FontDigest>>() {}.type)
+        fontDigests = digestJson.fromJson(InputStreamReader(fontInputStream), object : TypeToken<List<FontDigest>>() {}.type)
     }
 
     @Test
@@ -91,6 +90,14 @@ class GlyphUnitTest {
         collector.checkThat("check TrueType's header table should not be empty.",
                 true,
                 equalTo(trueTypeFont.headTable != null))
+
+        collector.checkThat("check TrueType's cmap table",
+                true,
+                equalTo(trueTypeFont.cmapTable != null))
+
+        collector.checkThat("check TrueType's glyph count",
+                trueTypeFont.glyphCount,
+                equalTo(trueTypeFont.glyphIndexedOffsets.size))
 
     }
 
@@ -124,7 +131,7 @@ class GlyphUnitTest {
     fun testTTFRedundency() {
         var redundencyIndex = listOf<Int>()
 
-        val glyphs = trueTypeFont.glyphs.filterNotNull()
+        val glyphs = trueTypeFont.glyphs
         (0 until glyphs.size - 1).forEach { index ->
             if (!redundencyIndex.contains(index)) {
 

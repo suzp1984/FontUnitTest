@@ -51,8 +51,8 @@ class ExampleUnitTest {
         println(trueTypeFont.glyphCount)
         println(trueTypeFont.glyphCount?.toUnsignedLong())
 
-        trueTypeFont.glyphIndexs.forEachIndexed { index, glyphIndex ->
-            println("index, offSet, length = ($index, ${glyphIndex?.offset?.toUnsignedLong()}, ${glyphIndex?.length?.toUnsignedLong()})")
+        trueTypeFont.glyphIndexedOffsets.forEachIndexed { index, glyphIndex ->
+            println("index, offSet, length = ($index, ${glyphIndex.offset.toUnsignedLong()}, ${glyphIndex.length.toUnsignedLong()})")
 
         }
 
@@ -61,7 +61,7 @@ class ExampleUnitTest {
         }
 
         trueTypeFont.glyphs.forEachIndexed { index, glyph ->
-            println("$index: ${glyph?.buffer?.getMd5Digest()?.encodeHex(false)}")
+            println("$index: ${glyph.buffer.getMd5Digest().encodeHex(false)}")
 
         }
 
@@ -86,7 +86,7 @@ class ExampleUnitTest {
             }
         }
 
-        val fontUnicodes : List<FontUnicode> = (0 until fonts.length).map {
+        val fontUnicodes : List<FontUnicode> = (0 until fonts.length).mapNotNull {
             val node = fonts.item(it)
             val name = node.attributes.getNamedItem("name").nodeValue
             val unicode = node.textContent.let {
@@ -98,7 +98,7 @@ class ExampleUnitTest {
             }
 
             unicode?.let { FontUnicode(name, unicode) }
-        }.filterNotNull()
+        }
 
 
         val inputStream : InputStream  = javaClass.classLoader.getResourceAsStream("assets/Font.ttf")

@@ -156,19 +156,19 @@ class TrueTypeFont(private val buffer: List<Byte>) {
         }
     }
 
-    val glyphs : List<Glyph?> by lazy {
-        (0 until (glyphCount ?: 0)).map {
+    val glyphs : List<Glyph> by lazy {
+        (0 until (glyphCount ?: 0)).mapNotNull {
             getGlyphByIndex(it)
         }
     }
 
-    val glyphIndexs : List<GlyphIndex?> by lazy {
-        (0 until (glyphCount ?: 0)).map {
+    val glyphIndexedOffsets : List<GlyphIndexedOffset> by lazy {
+        (0 until (glyphCount ?: 0)).mapNotNull {
             val offset = getGlyphOffsetByIndex(it)
             val length = getGlyphLengthByIndex(it)
 
             if (offset != null && length != null) {
-                GlyphIndex(offset, length)
+                GlyphIndexedOffset(it, offset, length)
             } else {
                 null
             }
@@ -257,7 +257,7 @@ data class HeadTable(val version : Int, val fontRevision : Int, val checkSumAdju
 
 data class Glyph(val index : Int, val buffer : List<Byte>)
 
-data class GlyphIndex(val offset : Int, val length : Int)
+data class GlyphIndexedOffset(val index : Int, val offset : Int, val length : Int)
 
 data class CmapTable(val version : Int, val numberSubtables : Int, val subTables : List<CmapSubTable>)
 

@@ -14,8 +14,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class GlyphUtils {
 
-    lateinit var trueTypeFont : TrueTypeFont
-    lateinit var fontUnicodes : List<FontUnicode>
+    private lateinit var trueTypeFont : TrueTypeFont
+    private lateinit var fontUnicodes : List<FontUnicode>
 
     @Before
     fun initGlypFont() {
@@ -46,7 +46,7 @@ class GlyphUtils {
         val xmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fontInputStream)
         val fonts : NodeList = xmlDoc.getElementsByTagName("string")
 
-        fontUnicodes = (0 until fonts.length).map {
+        fontUnicodes = (0 until fonts.length).mapNotNull {
             val node = fonts.item(it)
             val name = node.attributes.getNamedItem("name").nodeValue
             val unicode = node.textContent.let {
@@ -58,7 +58,7 @@ class GlyphUtils {
             }
 
             unicode?.let { FontUnicode(name, unicode) }
-        }.filterNotNull()
+        }
     }
 
     @Test
