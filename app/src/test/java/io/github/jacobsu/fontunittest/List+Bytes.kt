@@ -102,3 +102,14 @@ fun Int.toByteList() : List<Byte> {
 fun Int.encodeHex(toLowerCase: Boolean = true) : String {
     return toByteList().encodeHex(toLowerCase)
 }
+
+fun String.decodeHex() : Int? {
+    val charsTable = ('0' .. '9') + ('a' .. 'f')
+    val bytes = toLowerCase().trimStart('0').toCharArray().map {
+        charsTable.indexOf(it)
+    }
+
+    return bytes.fold(0) { r, t ->
+        (r shl 4) or t
+    }
+}

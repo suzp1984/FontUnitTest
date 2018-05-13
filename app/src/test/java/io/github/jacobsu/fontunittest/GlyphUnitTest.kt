@@ -77,13 +77,20 @@ class GlyphUnitTest {
 
     @Test
     fun testFontXmlRedundency() {
+        var redundencyNames = listOf<String>()
         (0 until xmlFontUnicodes.size - 1).forEach {
-            val filtedUnicodes = xmlFontUnicodes.subList(it + 1, xmlFontUnicodes.size - 1).filter { font ->
-                font.unicode == xmlFontUnicodes[it].unicode  }
+            if (!redundencyNames.contains(xmlFontUnicodes[it].name)) {
+                val sameUnicodes = xmlFontUnicodes.subList(it + 1, xmlFontUnicodes.size - 1)
+                                                    .filter { font ->
+                    font.unicode == xmlFontUnicodes[it].unicode
+                }
 
-            collector.checkThat("check duplicated fonts: (${xmlFontUnicodes[it].name}, ${xmlFontUnicodes[it].unicode.encodeHex()}) ->" +
-                    " ${filtedUnicodes.map { it.name }.joinToString(separator = ", ", prefix = "[", postfix = "]")}",
-                    true, equalTo(filtedUnicodes.isEmpty()))
+                redundencyNames += sameUnicodes.map { it.name }
+
+                collector.checkThat("check duplicated fonts with same unicode in xml: ${xmlFontUnicodes[it].unicode.encodeHex()}) ->" +
+                        " ${sameUnicodes.map { it.name }.plus(xmlFontUnicodes[it].name).joinToString(separator = ", ", prefix = "[", postfix = "]")}",
+                        true, equalTo(sameUnicodes.isEmpty()))
+            }
         }
     }
 
@@ -134,7 +141,7 @@ class GlyphUnitTest {
                     equalTo(actualDigest != null))
 
             if (expectedDigest != null && actualDigest != null) {
-                collector.checkThat("check font unicode ${fontUnicode.unicode}: ",
+                collector.checkThat("check font unicode ${fontUnicode.unicode.encodeHex()}: ",
                         actualDigest,
                         equalTo(expectedDigest)
                 )

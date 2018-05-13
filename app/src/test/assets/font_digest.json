@@ -1,706 +1,706 @@
 [
   {
     "name": "icon_add",
-    "digest": "74d34035599ec9c33bc5ac910499fa04"
+    "digest": "e0af2870bacfcca8268f494862b25aa2"
   },
   {
     "name": "icon_add_member",
-    "digest": "e08359d745f66dc8c1c4c8c160b2391b"
+    "digest": "e7df49903b93af0c1812ea7b20d84715"
   },
   {
     "name": "icon_add_team",
-    "digest": "86732c16d0986d7a9727bd2458098e66"
+    "digest": "cf8646e5a8faff3ce8021aff8bef3070"
   },
   {
     "name": "icon_airbrake",
-    "digest": "296e1e249487fe1722591aec558aa0f7"
+    "digest": "5a895c791c7bc94da729fd3347aa9f0d"
   },
   {
     "name": "icon_arrow",
-    "digest": "603622046bf44d117595a04e4bca5aa7"
+    "digest": "e2be8501a5097f8cff0c376c3cb67c7b"
   },
   {
     "name": "icon_asana",
-    "digest": "48b03327ce20891764c631fe32c1ef18"
+    "digest": "ec40e77b0a3aa20200f7d651a14edaa4"
   },
   {
     "name": "icon_at",
-    "digest": "19b1b66a540c8adea8496a6d7930c439"
+    "digest": "de81d91d815c75df1b43b4f05d15ff8a"
   },
   {
     "name": "icon_bigplane",
-    "digest": "60d2346f3f414bbe181b7ce6b6a51174"
+    "digest": "80fd8ef9e95b9f6a77e4273615e20832"
   },
   {
     "name": "icon_bitbucket",
-    "digest": "12a5f8f9bfd846d71a468db1cd4bade8"
+    "digest": "ad53dc6284472bc814d8b78a177428fa"
   },
   {
     "name": "icon_box",
-    "digest": "4180e1f8f577ace579ae7d29c95ecce7"
+    "digest": "dff4834d11bf1e3ef738b5faf59a6377"
   },
   {
     "name": "icon_calendar",
-    "digest": "ee2238aa735595b2a2851699cfb7bde8"
+    "digest": "783c50f4eaa6eeb10dc33e915b345847"
   },
   {
     "name": "icon_calendar_bold",
-    "digest": "4e74cc465de8d749dfd9769b13e54195"
+    "digest": "2f2daff21df14103dbf3a2e05ce1edb1"
   },
   {
     "name": "icon_calendar_drawer",
-    "digest": "1cf883c96aea41bd3c8fc13cb4f17b7b"
+    "digest": "4cdd5f6fba366cbec6631e69dcd21b16"
   },
   {
     "name": "icon_call",
-    "digest": "12b862172fc25ccddc78727427abaaf7"
+    "digest": "51107c82f946c46cba248541ac047c8f"
   },
   {
     "name": "icon_close",
-    "digest": "ce22e58c2693201e6a01138b9bafb2fc"
+    "digest": "54b8983e7eee3d9fadb83bbbbd8b1830"
   },
   {
     "name": "icon_color_circle",
-    "digest": "6c644520806e71f27306c139d22bc700"
+    "digest": "7fcae8b45cc62e83f244cd17eb64c230"
   },
   {
     "name": "icon_conference_top_bar",
-    "digest": "7dd76dc30027c611678c2a2b989042ba"
+    "digest": "b187199a6c51d2edbe61231210b81c68"
   },
   {
     "name": "icon_contacts",
-    "digest": "010c71169e44452dd333591df51aa823"
+    "digest": "0d7945a46eedafafcdc502ec272a8273"
   },
   {
     "name": "icon_contacts_filled",
-    "digest": "9d1b982532c751944b6598ed3304e73a"
+    "digest": "7257a82cdfeb61e021dc839b30c9e2e3"
   },
   {
     "name": "icon_conversation_conference",
-    "digest": "192cff14cbde362240ae734120b73036"
+    "digest": "a49188260ba676d731f07126e548c65d"
   },
   {
     "name": "icon_conversation_meetings",
-    "digest": "143d6ea24b87fe51c39fdcb7facf80b5"
+    "digest": "28d2bee0f167cd4a7b5d33b54fa6d159"
   },
   {
     "name": "icon_crashlyics",
-    "digest": "0831b034739f56b74a990a3f2e80894e"
+    "digest": "d708b6869659460ad736c3fc48e68840"
   },
   {
     "name": "icon_detail_assignees",
-    "digest": "d03bf3e96a98ffa502da2c32d7e17c71"
+    "digest": "e1c3361560c6c0d373254d7c96403d0c"
   },
   {
     "name": "icon_detail_attach",
-    "digest": "3c421a61cf008b26a99868d21f0266ca"
+    "digest": "93fa88120d32f57199fdd4195ff77f21"
   },
   {
     "name": "icon_detail_complete",
-    "digest": "96b3833d6734ac3859a68f6eb72f59a8"
+    "digest": "e81906e906eefcecfaafe115dfc0b15a"
   },
   {
     "name": "icon_detail_description",
-    "digest": "55d1e542580787bf9a40d2e5c7f1d774"
+    "digest": "3d08a8b7917a529895fddfe68ddf665d"
   },
   {
     "name": "icon_detail_due",
-    "digest": "1cf883c96aea41bd3c8fc13cb4f17b7b"
+    "digest": "4cdd5f6fba366cbec6631e69dcd21b16"
   },
   {
     "name": "icon_detail_duration",
-    "digest": "f001db00415cd823ba69698038516e5a"
+    "digest": "3d2c18cae49b3e498a06c57ad36a5e9f"
   },
   {
     "name": "icon_detail_edit",
-    "digest": "f5d9281036d5095d110de3a6c51e0f2f"
+    "digest": "31e904639281dc7841bda3fdc96a257e"
   },
   {
     "name": "icon_detail_location",
-    "digest": "bef105884368284dd6ce033c95aa063e"
+    "digest": "1f1d455350bad8834a01316222a3e8c9"
   },
   {
     "name": "icon_detail_repeat",
-    "digest": "3a34e56099dba092264aac8db202285b"
+    "digest": "3d144483d92907137cb6902ce34b5211"
   },
   {
     "name": "icon_detail_section",
-    "digest": "fd70685af9983d64c12cb54b30b08bf1"
+    "digest": "5a176a46f0f0e7f3e4ceb2692171d3f3"
   },
   {
     "name": "icon_done",
-    "digest": "fe86dcd86ec7abefa7e173eef529edfa"
+    "digest": "8369da4c5eed1452e8c7ae14e03f5e34"
   },
   {
     "name": "icon_donedone",
-    "digest": "b8508310350268a5840d6bab7b8c972d"
+    "digest": "c994b1563f96d29e665b56c4b5f0c4c9"
   },
   {
     "name": "icon_download",
-    "digest": "52a4792e2909c34691a3d5531e610be7"
+    "digest": "db9f309104bae29ae0ab4f634583f146"
   },
   {
     "name": "icon_dropbox",
-    "digest": "ca7032f94850146d6329270b907ed0a5"
+    "digest": "bb2ec945828c5ce840a0cd9cdd9f5403"
   },
   {
     "name": "icon_evernote",
-    "digest": "4a5fb7ad1937863ded0b00d58d8e4296"
+    "digest": "b9082a333d6f0ca1cfc33cf502a4494c"
   },
   {
     "name": "icon_file",
-    "digest": "3c421a61cf008b26a99868d21f0266ca"
+    "digest": "93fa88120d32f57199fdd4195ff77f21"
   },
   {
     "name": "icon_file_bold",
-    "digest": "3c421a61cf008b26a99868d21f0266ca"
+    "digest": "93fa88120d32f57199fdd4195ff77f21"
   },
   {
     "name": "icon_gif",
-    "digest": "e1d917d8843871ba4775a7410a3176cc"
+    "digest": "3aa338d2b4ec7d8b3c5d32243f64bf3d"
   },
   {
     "name": "icon_github",
-    "digest": "f9767d76128d6eb74bc199721cf79a8b"
+    "digest": "f0df6c4a6848e34e213856eeef559a21"
   },
   {
     "name": "icon_glipwebhooks",
-    "digest": "58c88d0c30c81bda27a1fe49c5a683fb"
+    "digest": "37d0573a3348be156511bb2fd15f8876"
   },
   {
     "name": "icon_googledrive",
-    "digest": "d4339a8aed8ed75d07f6a6d9565db8c4"
+    "digest": "621ee237986390521b6860378e28be2b"
   },
   {
     "name": "icon_group_avatar",
-    "digest": "d129b2ea5ab949be2169aa7c67a9d0a1"
+    "digest": "1e4789697a741660ad223fe88f97f09e"
   },
   {
     "name": "icon_phone",
-    "digest": "12b862172fc25ccddc78727427abaaf7"
+    "digest": "51107c82f946c46cba248541ac047c8f"
   },
   {
     "name": "icon_hangouts",
-    "digest": "88c80a98577c8d04a629860dabc739a6"
+    "digest": "1b17327353112af0e7556567865c410c"
   },
   {
     "name": "icon_harvest",
-    "digest": "0d7ff77b07a0041171acad94bc19fb81"
+    "digest": "710c2e099b852b38dda08afc4fcdb50f"
   },
   {
     "name": "icon_info",
-    "digest": "3257310c2e279926dc90d608ba756634"
+    "digest": "9a54ecbf1f154f7ab8d46bbd24fd135b"
   },
   {
     "name": "icon_info_a",
-    "digest": "07f95d8434591d378a1903123279b1f2"
+    "digest": "256e969d2254c387c1b3600d54ae6543"
   },
   {
     "name": "icon_integration",
-    "digest": "2b104509cdac93767fcb646e4307d0be"
+    "digest": "54dfa1f8b1e81c1db9335062377850e0"
   },
   {
     "name": "icon_item_camera",
-    "digest": "974383873fe5ae2febe0c5ba78baa05c"
+    "digest": "f93c1eef708f8f239676a38b422c035e"
   },
   {
     "name": "icon_item_file",
-    "digest": "3c421a61cf008b26a99868d21f0266ca"
+    "digest": "93fa88120d32f57199fdd4195ff77f21"
   },
   {
     "name": "icon_item_photo",
-    "digest": "60dc511bf14556c82179814556376b7c"
+    "digest": "2da7e4e9014c17fc58715c34f974f494"
   },
   {
     "name": "icon_item_repeat",
-    "digest": "f1b03e2cc2582b8c8fc5afccbf010ab0"
+    "digest": "ce699b59b743800b779253919f3fcf75"
   },
   {
     "name": "icon_jira",
-    "digest": "2f22b2395120903fc5c20f6684718c1e"
+    "digest": "e96cf1f2a84e3765b4e46d065774dcb5"
   },
   {
     "name": "icon_link",
-    "digest": "32055a62dcfa53c249477916e3d4bb5a"
+    "digest": "074973c2f5c02a2d4ffba6825e9c9381"
   },
   {
     "name": "icon_link_bold",
-    "digest": "32055a62dcfa53c249477916e3d4bb5a"
+    "digest": "074973c2f5c02a2d4ffba6825e9c9381"
   },
   {
     "name": "icon_mailchimp",
-    "digest": "65fe8975819b35b95da56939e004bf27"
+    "digest": "b4ee34a769da510974699272031b375f"
   },
   {
     "name": "icon_meetings",
-    "digest": "2a2b1de67f926fcf5793946b8af038a5"
+    "digest": "fe69ea1fd2ddbc26c24441cfb47364ee"
   },
   {
     "name": "icon_mentioned",
-    "digest": "5a51987a4e8e07f71fb2f18d67341301"
+    "digest": "0c2bd9c2ce5e42876c71bb3eddd3fb93"
   },
   {
     "name": "icon_message",
-    "digest": "9c87906da6d560e994ab2775f23ce1f1"
+    "digest": "4c15b0e332d5163ec68caaa813e76d61"
   },
   {
     "name": "icon_message_filled",
-    "digest": "a11d42691704010b7fdf79394540a0f3"
+    "digest": "6cca5f9d30141930373e34bb59ff85eb"
   },
   {
     "name": "icon_more",
-    "digest": "5cbf495c918e1fae94f4538301f30f1c"
+    "digest": "e7020fd8a370e5a05aaf60416c004d1e"
   },
   {
     "name": "icon_new_message",
-    "digest": "33f7903b1ca0ebf65db306ac8644151a"
+    "digest": "e9067de9bf994e322a8211947c7d0837"
   },
   {
     "name": "icon_back",
-    "digest": "69c6c3a4fc466d815c0f2f42b66b6a07"
+    "digest": "6996b6009d98461ee0c2225855b42987"
   },
   {
     "name": "icon_next",
-    "digest": "1aca88444a0838a5db06a87f0f144f40"
+    "digest": "e7497c296b2761adcc86e82acdb6eae4"
   },
   {
     "name": "icon_next_2",
-    "digest": "fb355930abd3b5e30fadb118c34f45b0"
+    "digest": "d9e091fd9b030f42f628d878484e1b44"
   },
   {
     "name": "icon_normal_file",
-    "digest": "3c421a61cf008b26a99868d21f0266ca"
+    "digest": "93fa88120d32f57199fdd4195ff77f21"
   },
   {
     "name": "icon_note",
-    "digest": "b5dd197eb34216ae158e7b3075d7d1b4"
+    "digest": "9f1139a7bab98dcaed25d984750200c5"
   },
   {
     "name": "icon_note_bold",
-    "digest": "2c92a44baad7a018dfe772cb55a3e577"
+    "digest": "957c68269e6317d01b7eefd41061e59f"
   },
   {
     "name": "icon_onedrive",
-    "digest": "287477c62765e22149d3a5ff3943be6d"
+    "digest": "8bc8a1cccea21e792398a9c0629940d8"
   },
   {
     "name": "icon_pagerduty",
-    "digest": "aa3efff8768dd196fdadade7e36826b3"
+    "digest": "442291b3bb7644539874bf3d759845b7"
   },
   {
     "name": "icon_person",
-    "digest": "d03bf3e96a98ffa502da2c32d7e17c71"
+    "digest": "e1c3361560c6c0d373254d7c96403d0c"
   },
   {
     "name": "icon_photo_library",
-    "digest": "76158cb435112055534bc11ec78a3b77"
+    "digest": "b3db4d7b7628ae21d20b3885d86ee4f2"
   },
   {
     "name": "icon_pivotal_tracker",
-    "digest": "41cb5e7f4d52d85c80e3480497bf88e9"
+    "digest": "906fc113367e131797d76e8962073e3a"
   },
   {
     "name": "icon_like_post",
-    "digest": "23f7a44e17ea669255a089772c10403b"
+    "digest": "f143b2850dd728da85fb393a551c7f1e"
   },
   {
     "name": "icon_me_like_post",
-    "digest": "3254c5441c1305a5cea665ef512ed784"
+    "digest": "50ed424ad0945b97fe14d495f08316d5"
   },
   {
     "name": "icon_remove",
-    "digest": "2c77e4ba497a9a4e7101b965deda8615"
+    "digest": "8575e7f40060cda53645a83e90e307dc"
   },
   {
     "name": "icon_retry",
-    "digest": "890227b21e1dbf2e655a203a9ec91c19"
+    "digest": "cff985a4d48e2b80aac2a202bb62fee0"
   },
   {
     "name": "icon_search",
-    "digest": "7a8015dec21d86e2ab640f7d38b22bfd"
+    "digest": "d9cdfdf56eab9b43ce9ce04a6f250af1"
   },
   {
     "name": "icon_send",
-    "digest": "60d2346f3f414bbe181b7ce6b6a51174"
+    "digest": "80fd8ef9e95b9f6a77e4273615e20832"
   },
   {
     "name": "icon_settings",
-    "digest": "9cd0646b554a4ac316c375714285dab1"
+    "digest": "0d53129048587fd20083bfa6c8bc6697"
   },
   {
     "name": "icon_settings_filled",
-    "digest": "064669d006d0d91fe7d55fd82b5f29e4"
+    "digest": "535ffa0edb76a0db3f870c36cd8cd3be"
   },
   {
     "name": "icon_settings_helpshift",
-    "digest": "cb5e5b61af954c9c34d75824ad8950b1"
+    "digest": "040a2bfd83d05d2f8768d01ea3883797"
   },
   {
     "name": "icon_single_avatar",
-    "digest": "c5f15cfddb698c1dd754e2ec778349d1"
+    "digest": "a69d9034a5f3354647a5584cdd52a488"
   },
   {
     "name": "icon_contact",
-    "digest": "9dd5e1cbd2cdc85b240bdece2b549888"
+    "digest": "f36fb36238efd44111aadc32056828d4"
   },
   {
     "name": "icon_security",
-    "digest": "7e8aa1fa59843abb1432792eb0634b11"
+    "digest": "1e6ea6c7dd33c226ad2ff97c81bac904"
   },
   {
     "name": "icon_stripe",
-    "digest": "325cdd8fc84167cafb8f678b8a3207ce"
+    "digest": "62ae5c68757795d30462eb410ee00adb"
   },
   {
     "name": "icon_task",
-    "digest": "89837fd40979c6e7e7cd695547fe972d"
+    "digest": "709f79f0cbfcee802d18c69fd38bce96"
   },
   {
     "name": "icon_task_bold",
-    "digest": "d9a4eb9162024eb9d0d1f80c133ef0b1"
+    "digest": "4796dd3787e7726cfe02c6029a63bbfa"
   },
   {
     "name": "icon_task_complete",
-    "digest": "6fb16d766a3f0aed76199f4dda7ba6f5"
+    "digest": "c0de0e8b2a90bf4c3479a9769631ee85"
   },
   {
     "name": "icon_task_complete_bold",
-    "digest": "800a24767201f66a11e98657a89500fe"
+    "digest": "8fb55a11d7fc183a82fbd0b4a0ffcada"
   },
   {
     "name": "icon_task_filled",
-    "digest": "ad5573e79b17009ee2012e07afe0c168"
+    "digest": "a5c4bf2d2ceaf47ed7dcb1f0334f04a8"
   },
   {
     "name": "icon_team",
-    "digest": "3723ebab06a3b848cdb1db834b70e2f9"
+    "digest": "aa52df4f05d1273ddc6349dc1c03cfb4"
   },
   {
     "name": "icon_team_avatar",
-    "digest": "23218fad83c2517ff1417c5ad93e4b0f"
+    "digest": "120614766decdc3e5b2f952cc5334fad"
   },
   {
     "name": "icon_trello",
-    "digest": "dc5a82dfa51e8b7c8b21279db7218dca"
+    "digest": "4a29de013e5483546e4d796ca03979e1"
   },
   {
     "name": "icon_warning",
-    "digest": "85e9237acc3ba7540e49862b40475722"
+    "digest": "a65ebfe049b9784a5df3eedfd4cf8b79"
   },
   {
     "name": "icon_zapier",
-    "digest": "207b6d9276115947ba42331ea4e291ef"
+    "digest": "ee1c55a052f85799f097ab5ff3835870"
   },
   {
     "name": "icon_zendesk",
-    "digest": "4d91bddf8416bdc4d0711e53254fce75"
+    "digest": "dcb6fe1ead4332359beaa680d348d97c"
   },
   {
     "name": "icon_arrowup",
-    "digest": "ce245ef1acf66e7669996d746a7acf54"
+    "digest": "97269bb69aa65d210ecb24c0ab436132"
   },
   {
     "name": "icon_salesforce",
-    "digest": "b9ee1174bc03547fa9bcce6ba0352078"
+    "digest": "ebb8d661749c8e52d9af393b200bb51a"
   },
   {
     "name": "icon_plus",
-    "digest": "6d9de561371a6dff334a0fc8b50352bb"
+    "digest": "d7b1efbb45515aa7505398ab414888f0"
   },
   {
     "name": "icon_emailadd",
-    "digest": "cdb1703cac6ce24a71280a5d07d3fa4d"
+    "digest": "9d7937efebee803b88c00e60ce7861a9"
   },
   {
     "name": "icon_moreadd",
-    "digest": "2c3cad05bced023a8c935086824716de"
+    "digest": "b063f68238e617aab888a99879af294c"
   },
   {
     "name": "icon_smsadd",
-    "digest": "897f1969bf8875a8cdc1ad816e26b62a"
+    "digest": "9593295d2a54e1cc5901db98da60b4e3"
   },
   {
     "name": "icon_zipicon",
-    "digest": "e97e368425ce3611784c5b0651a03346"
+    "digest": "1da1a3852b75fc36ddbac8f0bb871790"
   },
   {
     "name": "icon_defaultfileicon",
-    "digest": "ea503048e8fb4194631b48a08376d3bf"
+    "digest": "37a24f7224f9eabe8a428e355baa6e31"
   },
   {
     "name": "icon_videoicon",
-    "digest": "b4e2d6239f3e653728b1521790f98eed"
+    "digest": "99724406af39490d219868c35f0d9031"
   },
   {
     "name": "icon_audioicon",
-    "digest": "c8249933800b2d8101cd522d454f4742"
+    "digest": "cb8314aa62b1c0e33411250a4a732d27"
   },
   {
     "name": "icon_cancel",
-    "digest": "6fdf94038be2ede56ee15e8a9763ca70"
+    "digest": "3276d7b8353fba73a022016ca3c0cc07"
   },
   {
     "name": "icon_play",
-    "digest": "f414da005ed4d619f16af4783cd51d32"
+    "digest": "cb19a93e28e4ca4bf5e78e1243fbc0be"
   },
   {
     "name": "icon_pause",
-    "digest": "ed01b4851e535a1c38171f325b42b9c3"
+    "digest": "4b02309244852ab6047de5ad94955991"
   },
   {
     "name": "icon_internal_for_vm",
-    "digest": "496cf30aee1bfabbd661d32caee3869a"
+    "digest": "9b0a2e516343900360bc9d1482bcf04a"
   },
   {
     "name": "icon_speaker_for_vm",
-    "digest": "beaf1df269b810acfc94b46d6b251490"
+    "digest": "285097e8242d0f9bd4fdbecf68d68dd0"
   },
   {
     "name": "icon_bluetooth_for_vm",
-    "digest": "b2e5f06bad4a4071c833d881dff38c84"
+    "digest": "27dd92e7497b799ae0382305db0f4ae9"
   },
   {
     "name": "icon_earphone_for_vm",
-    "digest": "cf6dcae672d27cc2a37a9cf3d9b2a9a1"
+    "digest": "4eeb5df12960d46bb0edfec8127d13b7"
   },
   {
     "name": "icon_headset_for_vm",
-    "digest": "429f42736985a207dc2af9e5b2f2f3eb"
+    "digest": "27c73ae804b598e8f4421b3b60d3af9f"
   },
   {
     "name": "icon_multi_phone",
-    "digest": "e38131bfbddcd4a071bcdec6329f4fe5"
+    "digest": "fa5c96c80667ebc33d87c47385ddbd20"
   },
   {
     "name": "icon_multi_bluetooth",
-    "digest": "d32702a0794a2161b1ea957b4835d1c1"
+    "digest": "481626c3155e676ff9adcf6806c15dc3"
   },
   {
     "name": "icon_multi_speaker",
-    "digest": "9d51d14b3a9b032aafb64d06751ffccd"
+    "digest": "508c3755fc7046769ad1df1445281222"
   },
   {
     "name": "icon_multi_earphone",
-    "digest": "d75ab006ad0199d68f03b3b41eab6c7c"
+    "digest": "0d1f3cb5cff9d208964c28964e82a270"
   },
   {
     "name": "icon_call_cancelled",
-    "digest": "065f0541cd08cbd9f29673d31e8f91d9"
+    "digest": "2e1d1a396dfe46ae241f31151ec5e60a"
   },
   {
     "name": "icon_call_inbound",
-    "digest": "785d1d4ed278e1bdebe5b4a6731d11d5"
+    "digest": "f1048756fd6c20f0210204eb031d7230"
   },
   {
     "name": "icon_call_outbound",
-    "digest": "ea7150242f4793b3917c0aceb6526557"
+    "digest": "26399780e6614dc613900b466aa5be79"
   },
   {
     "name": "icon_call_voicemail",
-    "digest": "0d05d4dad2fd1130e7e314693a55439e"
+    "digest": "30c93f1c2ea5c208740c9a210c2066cc"
   },
   {
     "name": "icon_call_missedcall",
-    "digest": "1b9c6e528727efa9823bbdbb98916947"
+    "digest": "0fa1ea6a8b76e0f5bf9acba1d73f9324"
   },
   {
     "name": "icon_home",
-    "digest": "47ead1802b93b857f951ca9e3e2676fc"
+    "digest": "37494ad606493f331faa9f55533b1a50"
   },
   {
     "name": "icon_add_number",
-    "digest": "d45437e26fe26b170a44842dd83ddf03"
+    "digest": "094bae5710793e9e20525e0616ccb73a"
   },
   {
     "name": "icon_delete",
-    "digest": "9f6d1977a39616f7ba28eab5c7b752bd"
+    "digest": "912e849fb0b6dadc83cb3cdcfae2a1c9"
   },
   {
     "name": "icon_keypad",
-    "digest": "6a2429649cc80a7f6f3971db05e414ee"
+    "digest": "45a2e02e8a5b28148b57edd57938128c"
   },
   {
     "name": "icon_new_call",
-    "digest": "158a8945fec11d69f0a07b9d4b85bc04"
+    "digest": "f859be5567281485bd1e4d5828b514eb"
   },
   {
     "name": "icon_new_sms",
-    "digest": "a11d42691704010b7fdf79394540a0f3"
+    "digest": "6cca5f9d30141930373e34bb59ff85eb"
   },
   {
     "name": "icon_new_fax",
-    "digest": "74b04420e383b586baba6d3408e61743"
+    "digest": "eb0f043bddbab484eac377afdd5310d0"
   },
   {
     "name": "icon_flip",
-    "digest": "a5e08c55954d9ff583c5115bd08e23e5"
+    "digest": "7c7e427996f8ea7885fe1c6920e625d8"
   },
   {
     "name": "icon_transfer",
-    "digest": "b73ad6601c761a4c0245d9abead3030d"
+    "digest": "fad6074527f6c4f08f4e3f088aecf0ea"
   },
   {
     "name": "icon_hold",
-    "digest": "93626de518725da55fd238bea8876081"
+    "digest": "cb3078eff65732fd9ddfb0c61695a27c"
   },
   {
     "name": "icon_park",
-    "digest": "55bfa85e64d28bd4442ea75dbea98c95"
+    "digest": "866f1db29555d2094cb4712d1371cc60"
   },
   {
     "name": "icon_record",
-    "digest": "d2a3c6944adaf5e08cff277371a128c6"
+    "digest": "c277f28aa8b9ab1bdfe1d6db5321a73c"
   },
   {
     "name": "icon_stop_record",
-    "digest": "55915b1a16c30962cf740e70b902d404"
+    "digest": "c8e9bec9893462267d4b923f0b04afe0"
   },
   {
     "name": "icon_switch_to_carrier",
-    "digest": "08a454f3685b3a21fa692ab4947e0f6f"
+    "digest": "e2c4828085e10b6f487d6d7b2737d0f9"
   },
   {
     "name": "icon_speaker_for_call",
-    "digest": "beaf1df269b810acfc94b46d6b251490"
+    "digest": "285097e8242d0f9bd4fdbecf68d68dd0"
   },
   {
     "name": "icon_bluetooth_for_call",
-    "digest": "b2e5f06bad4a4071c833d881dff38c84"
+    "digest": "27dd92e7497b799ae0382305db0f4ae9"
   },
   {
     "name": "icon_headset",
-    "digest": "cf6dcae672d27cc2a37a9cf3d9b2a9a1"
+    "digest": "4eeb5df12960d46bb0edfec8127d13b7"
   },
   {
     "name": "icon_mute",
-    "digest": "77eac0f0fbf852896d6174cdf8299b29"
+    "digest": "7c8f4ff82e7b18b25bff7421dd774bbf"
   },
   {
     "name": "icon_unmute",
-    "digest": "541fca18daf64c7f52187a43dc79f8a4"
+    "digest": "608dd9b585cabba63f479e355b302621"
   },
   {
     "name": "icon_action_undo",
-    "digest": "637c431d91f05ebd90c30367a2a200ed"
+    "digest": "2fe71740b519daed31a8c62fb6a95c8e"
   },
   {
     "name": "icon_action_redo",
-    "digest": "d2ea509e281f85ee5406d09fcf6f1238"
+    "digest": "8dd112b02847bc7468df1051b5c9f711"
   },
   {
     "name": "icon_action_bold",
-    "digest": "1088afc3ed5d066927220eef086eb028"
+    "digest": "9dffb2bb517ad1b75154748c32b56182"
   },
   {
     "name": "icon_action_italic",
-    "digest": "5175a089fef1371b011cad0299af095c"
+    "digest": "dcd643e0a28d970ae76e249934768257"
   },
   {
     "name": "icon_action_indent",
-    "digest": "e68aa48bf1cee74390ecb881d11ea395"
+    "digest": "445e77c52274cf679aea33e59a8b066e"
   },
   {
     "name": "icon_action_outdent",
-    "digest": "19bfed114055d41793bfa7a89c642d30"
+    "digest": "9ae3a4d56b9aba1f665b61f5507e4998"
   },
   {
     "name": "icon_action_unorderlist",
-    "digest": "39e9abe341e8abe9190c1fcbbe12bca7"
+    "digest": "8982245894179f34f847e3c3ffde4022"
   },
   {
     "name": "icon_action_orderlist",
-    "digest": "67faa1e0e94f5105336ec8c695dd240d"
+    "digest": "866978872f587284abaa7616cbc1d4b8"
   },
   {
     "name": "icon_action_underline",
-    "digest": "e90fd87a35b580236bf337b7683b4cda"
+    "digest": "f27ff0819b4c14f1ccb13b44296b93fb"
   },
   {
     "name": "icon_edit_clear",
-    "digest": "69480c9c02737e9f06afb64cac073dc1"
+    "digest": "9427a3d6a287582c9b086ad0eab8535c"
   },
   {
     "name": "icon_due_time",
-    "digest": "ebc545abbb5b50d200749748e26c28c0"
+    "digest": "c637998c126d3098a162aa7466baf88d"
   },
   {
     "name": "icon_conversation_invite",
-    "digest": "9c87906da6d560e994ab2775f23ce1f1"
+    "digest": "4c15b0e332d5163ec68caaa813e76d61"
   },
   {
     "name": "icon_in_favorite",
-    "digest": "4dfa7f970d9fcd5994f4a677e0619795"
+    "digest": "7ec8f3b19da5163ec9472aa0c626390f"
   },
   {
     "name": "icon_not_favorite",
-    "digest": "aa2c15c3dd9d80032a2d868f810abc54"
+    "digest": "1ea74dfa941277bddcf4274e1b3035df"
   },
   {
     "name": "icon_settings_group",
-    "digest": "064669d006d0d91fe7d55fd82b5f29e4"
+    "digest": "535ffa0edb76a0db3f870c36cd8cd3be"
   },
   {
     "name": "icon_public",
-    "digest": "be3c51b50f7b03c2168de91cb0822848"
+    "digest": "27fa70080096666633bc7e13add8ed7f"
   },
   {
     "name": "icon_private",
-    "digest": "49dea123912257fae6252a81a44aec36"
+    "digest": "6a7df7b527a11b835cd2b13e419a029c"
   },
   {
     "name": "icon_join_now_drawer",
-    "digest": "8a0fe482229fa94d0e850b9995388c96"
+    "digest": "c718be22f3a9da901ea4fd67f7db8012"
   },
   {
     "name": "icon_join_now_event_reply",
-    "digest": "cd729de458999c49b06d4418e6b60171"
+    "digest": "27534562823dfe5ffac3c9113ed3df5c"
   },
   {
     "name": "icon_detail_view",
-    "digest": "04e241f4c7432f7088794b14448c0dad"
+    "digest": "6f514ca2adc771f112222010f15ddb9c"
   },
   {
     "name": "icon_location",
-    "digest": "bef105884368284dd6ce033c95aa063e"
+    "digest": "1f1d455350bad8834a01316222a3e8c9"
   },
   {
     "name": "icon_paste",
-    "digest": "c3f81cff91f6a802b9d0517a3a2743d9"
+    "digest": "aaf1754cf856ea5375f053a24302032a"
   },
   {
     "name": "icon_backward",
-    "digest": "05763e80812d07a207d63e19f2fe86ea"
+    "digest": "ddb7c3f14aa4d90059b89cc1e8812737"
   },
   {
     "name": "icon_forward",
-    "digest": "2b9ebf7dc33f73ea3b45e551cca81f74"
+    "digest": "36af6396a4ebed7b11dc019b43e5e8ac"
   },
   {
     "name": "icon_mark_read",
-    "digest": "03ff982b5321b01dded7a1414f58b3b1"
+    "digest": "1578b1a81d7a3e31ffce08f0b3fb53d0"
   },
   {
     "name": "icon_share",
-    "digest": "17176d07a1ef4b93f7c5ad98e057e193"
+    "digest": "b063f68238e617aab888a99879af294c"
   },
   {
     "name": "icon_account_set_up_company",
-    "digest": "3710d4c21c05997d4ce69462ad808e51"
+    "digest": "cfb796fff9f88a150d8741bc15867082"
   },
   {
     "name": "icon_account_set_up_name",
-    "digest": "9dd5e1cbd2cdc85b240bdece2b549888"
+    "digest": "f36fb36238efd44111aadc32056828d4"
   },
   {
     "name": "icon_account_set_up_password",
-    "digest": "49dea123912257fae6252a81a44aec36"
+    "digest": "6a7df7b527a11b835cd2b13e419a029c"
   },
   {
     "name": "icon_me_conversation",
-    "digest": "274d54fb09581530a5ab7f6e7a7f80c2"
+    "digest": "66d8b4a210c7dc5c126a501369e2263c"
   },
   {
     "name": "icon_mute_notifications",
-    "digest": "cd271322d1b1fc71e16e4b61a405df2a"
+    "digest": "8922af35d43fffb880634be031873826"
   }
 ]

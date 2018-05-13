@@ -63,10 +63,6 @@ class GlyphUtils {
 
     @Test
     fun generateFontDigest() {
-        fontUnicodes.forEachIndexed { index, fontUnicode ->
-            val digest = trueTypeFont.getGlyphByUnicode(fontUnicode.unicode)?.buffer?.getMd5Digest()?.encodeHex()
-            println("$index, ${fontUnicode.name} -> $digest")
-        }
 
         val fontDigets : List<FontDigest?> = fontUnicodes.map {
             val digest = trueTypeFont.getGlyphByUnicode(it.unicode)?.buffer?.getMd5Digest()?.encodeHex()
@@ -95,6 +91,19 @@ class GlyphUtils {
             val glyph = trueTypeFont.getGlyphByUnicode(fontUnicode.first().unicode)
             Assert.assertEquals(true, glyph != null)
             Assert.assertEquals(fontDigest.digest, glyph?.buffer?.getMd5Digest()?.encodeHex())
+        }
+    }
+
+    @Test
+    fun readFontByUnicodeFromTTF() {
+        val unicodeStr = "e9aa"
+
+        unicodeStr.decodeHex()?.let {
+            trueTypeFont.getGlyphByUnicode(it)?.also {
+                println(it)
+                println("unicode ${unicodeStr.trimStart('0')}: glyph buffer = ${it.buffer.encodeHex()}")
+                println("unicode ${unicodeStr.trimStart('0')}: glyph digest = ${it.buffer.getMd5Digest().encodeHex()}")
+            }
         }
     }
 }
