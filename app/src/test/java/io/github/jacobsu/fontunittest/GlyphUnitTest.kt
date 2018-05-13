@@ -87,6 +87,11 @@ class GlyphUnitTest {
                     equalTo(it.key.isNotEmpty()))
 
         }
+
+        collector.checkThat("check TrueType's header table should not be empty.",
+                true,
+                equalTo(trueTypeFont.headTable != null))
+
     }
 
     @Test

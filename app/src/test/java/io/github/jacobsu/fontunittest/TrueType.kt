@@ -2,7 +2,7 @@ package io.github.jacobsu.fontunittest
 
 import java.util.*
 
-class TrueTypeFont(val buffer: List<Byte>) {
+class TrueTypeFont(private val buffer: List<Byte>) {
     val scalarType by lazy { buffer.getIntFrom(0) }
     val numTables  by lazy { buffer.getShortFrom(4) }
     val searchRange by lazy { buffer.getShortFrom(6) }
@@ -92,7 +92,7 @@ class TrueTypeFont(val buffer: List<Byte>) {
                             val rangeShift = buffer.getShortFrom(subTableStart + 12)
                                                     ?.toUnsignedInt()
 
-                            val endcode : List<Int?> = (0 until (segCountX2 ?: 0)/2).map {
+                            val endcode : List<Int> = (0 until (segCountX2 ?: 0)/2).mapNotNull {
                                 val endCodeStart = subTableStart + 14 + it * 2
                                 buffer.getShortFrom(endCodeStart)?.toUnsignedInt()
                             }
@@ -106,21 +106,29 @@ class TrueTypeFont(val buffer: List<Byte>) {
 
                             val idDeltaStart = reservedPadStart + 2 + (segCountX2 ?: 0)
 
-                            val idDelta = (0 until (segCountX2 ?: 0) / 2).map {
+                            val idDelta = (0 until (segCountX2 ?: 0) / 2).mapNotNull {
                                 buffer.getShortFrom(idDeltaStart + it * 2)?.toUnsignedInt()
                             }
 
                             val idRangeOffsetStart = idDeltaStart + (segCountX2 ?: 0)
-                            val idRangeOffSet = (0 until (segCountX2 ?: 0) / 2).map {
+                            val idRangeOffSet = (0 until (segCountX2 ?: 0) / 2).mapNotNull {
                                 buffer.getShortFrom(idRangeOffsetStart + it * 2)
                                         ?.toUnsignedInt()
                             }
 
-                            CmapSubTable4(platformID, platformSpecificID, subTableOffset,
-                                    format, length, language,
-                                    segCountX2, searchRange, entrySelector,
-                                    rangeShift, endcode, reservedPad,
-                                    startCode, idDelta, idRangeOffSet)
+                            if (length != null && language != null
+                                    && segCountX2 != null && searchRange != null
+                                    && entrySelector != null && endcode.isNotEmpty()
+                                    && startCode.isNotEmpty() && idDelta.isNotEmpty()
+                                    && reservedPad != null && rangeShift != null) {
+                                CmapSubTable4(platformID, platformSpecificID, subTableOffset,
+                                        format, length, language,
+                                        segCountX2, searchRange, entrySelector,
+                                        rangeShift, endcode, reservedPad,
+                                        startCode.filterNotNull(), idDelta, idRangeOffSet)
+                            } else {
+                                null
+                            }
 
                         }
                         else -> {
@@ -133,7 +141,7 @@ class TrueTypeFont(val buffer: List<Byte>) {
             }
 
             if (version != null && numberSubtables != null) {
-                CmapTable(version, numberSubtables, subTables)
+                CmapTable(version, numberSubtables, subTables.filterNotNull())
             } else {
                 null
             }
@@ -169,7 +177,7 @@ class TrueTypeFont(val buffer: List<Byte>) {
 
     fun getGlyphByUnicode(unicode : Int) : Glyph? {
         return cmapTable?.subTables?.map {
-            it?.getGlyphIndexByUnicode(unicode)?.run { getGlyphByIndex(this) }
+            it.getGlyphIndexByUnicode(unicode)?.run { getGlyphByIndex(this) }
         }?.firstOrNull { it != null }
     }
 
@@ -251,7 +259,7 @@ data class Glyph(val index : Int, val buffer : List<Byte>)
 
 data class GlyphIndex(val offset : Int, val length : Int)
 
-data class CmapTable(val version : Int, val numberSubtables : Int, val subTables : List<CmapSubTable?>)
+data class CmapTable(val version : Int, val numberSubtables : Int, val subTables : List<CmapSubTable>)
 
 sealed class CmapSubTable(open val platformID : Int, open val platformSpecificID : Int,
                         open val offset : Long, open val format : Int?, open val length : Int?) {
@@ -268,18 +276,18 @@ data class CmapSubTableUnknown(override val platformID : Int, override val platf
 }
 
 data class CmapSubTable4(override val platformID : Int, override val platformSpecificID : Int,
-                         override val offset : Long, override val format : Int?,
-                         override val length : Int?,
-                         val language : Int?, val segCountX2 : Int?, val searchRange : Int?,
-                         val entrySelector : Int?, val rangeShift : Int?,
-                         val endCode : List<Int?>, val reservedPad : Int?,
-                         val startCode : List<Int?>, val idDelta : List<Int?>,
-                         val idRangeOffSet : List<Int?>) :
+                         override val offset : Long, override val format : Int,
+                         override val length : Int,
+                         val language : Int, val segCountX2 : Int, val searchRange : Int,
+                         val entrySelector : Int, val rangeShift : Int,
+                         val endCode : List<Int>, val reservedPad : Int,
+                         val startCode : List<Int>, val idDelta : List<Int>,
+                         val idRangeOffSet : List<Int>) :
         CmapSubTable(platformID, platformSpecificID, offset, format, length) {
 
     override fun getGlyphIndexByUnicode(unicode: Int): Int? {
 
-        return (0 until (segCountX2 ?: 0) / 2).firstOrNull {
+        return (0 until segCountX2 / 2).firstOrNull {
                 (endCode.elementAtOrNull(it) ?: 0) >= unicode &&
                     (startCode.elementAtOrNull(it) ?: 0) <= unicode
             }?.let {
