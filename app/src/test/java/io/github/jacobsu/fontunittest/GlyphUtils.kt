@@ -14,7 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class GlyphUtils {
 
-    lateinit var trueTypeFont : TrueTypeBuffer
+    lateinit var trueTypeFont : TrueTypeFont
     lateinit var fontUnicodes : List<FontUnicode>
 
     @Before
@@ -37,7 +37,7 @@ class GlyphUtils {
 
         val fontBuffer = os.toByteArray().toList()
 
-        trueTypeFont = TrueTypeBuffer(fontBuffer)
+        trueTypeFont = TrueTypeFont(fontBuffer)
     }
 
     @Before

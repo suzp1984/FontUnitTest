@@ -2,17 +2,17 @@ package io.github.jacobsu.fontunittest
 
 import java.util.*
 
-class TrueTypeBuffer(val buffer: List<Byte>) {
+class TrueTypeFont(val buffer: List<Byte>) {
     val scalarType by lazy { buffer.getIntFrom(0) }
     val numTables  by lazy { buffer.getShortFrom(4) }
     val searchRange by lazy { buffer.getShortFrom(6) }
     val entrySelector by lazy { buffer.getShortFrom(8) }
     val rangeShift by lazy { buffer.getShortFrom(10) }
 
-    val tables by lazy {
+    val offsetTables by lazy {
         (0 until (numTables ?: 0)).map {
             val start = 12 + it * 16
-            val tag = buffer.getStringFrom(start, 4)
+            val tag = buffer.getStringFrom(start, 4) ?: ""
             val table = Table(checkSum = buffer.getIntFrom(start + 4) ?: 0,
                                 offSet = buffer.getIntFrom(start + 8) ?: 0,
                                 length = buffer.getIntFrom(start + 12) ?: 0)
@@ -22,7 +22,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
     }
 
     val headTable : HeadTable? by lazy {
-        val offSet = tables["head"]?.offSet
+        val offSet = offsetTables["head"]?.offSet
 
         offSet?.let {
             val version = buffer.getIntFrom(it)
@@ -64,7 +64,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
     }
 
     val cmapTable : CmapTable? by lazy {
-        tables["cmap"]?.offSet?.let { offset ->
+        offsetTables["cmap"]?.offSet?.let { offset ->
             val version = buffer.getShortFrom(offset)?.toUnsignedInt()
             val numberSubtables = buffer.getShortFrom(offset + 2)?.toUnsignedInt()
 
@@ -142,7 +142,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
     }
 
     val glyphCount by lazy {
-        val offset = tables["maxp"]?.offSet
+        val offset = offsetTables["maxp"]?.offSet
         offset?.let {
             buffer.getShortFrom(it + 4)?.toUnsignedInt()
         }
@@ -176,7 +176,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
     fun getGlyphByIndex(index: Int) : Glyph? {
         val offset = getGlyphOffsetByIndex(index)
         val length = getGlyphLengthByIndex(index)
-        val glyfTable = tables["glyf"]
+        val glyfTable = offsetTables["glyf"]
 
         if (offset != null && length != null
                         && glyfTable != null) {
@@ -200,7 +200,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
             return null
         }
 
-        val locaOffset = tables["loca"]?.offSet
+        val locaOffset = offsetTables["loca"]?.offSet
 
         return locaOffset?.let {
             when (headTable?.indexToLocFormat) {
@@ -224,7 +224,7 @@ class TrueTypeBuffer(val buffer: List<Byte>) {
         val start = getGlyphOffsetByIndex(index)
         val end = when (index + 1) {
             glyphCount ?: 0 -> {
-                tables["glyf"]?.length
+                offsetTables["glyf"]?.length
             }
             else -> {
                 getGlyphOffsetByIndex(index + 1)

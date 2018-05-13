@@ -14,10 +14,6 @@ import javax.xml.parsers.DocumentBuilderFactory
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
 
     @Test
     fun access_assets() {
@@ -40,14 +36,14 @@ class ExampleUnitTest {
 
         val fontBuffer = os.toByteArray().toList()
 
-        val trueTypeFont = TrueTypeBuffer(fontBuffer)
+        val trueTypeFont = TrueTypeFont(fontBuffer)
         println(trueTypeFont.scalarType)
         println(trueTypeFont.numTables)
         println(trueTypeFont.searchRange)
         println(trueTypeFont.entrySelector)
         println(trueTypeFont.rangeShift)
 
-        trueTypeFont.tables.forEach { s, table ->
+        trueTypeFont.offsetTables.forEach { s, table ->
             println("$s -> $table")
         }
 
@@ -123,7 +119,7 @@ class ExampleUnitTest {
 
         val fontBuffer = os.toByteArray().toList()
 
-        val trueTypeFont = TrueTypeBuffer(fontBuffer)
+        val trueTypeFont = TrueTypeFont(fontBuffer)
 
         fontUnicodes.forEachIndexed { index, fontUnicode ->
             val digest = trueTypeFont.getGlyphByUnicode(fontUnicode.unicode)?.buffer?.getMd5Digest()?.encodeHex()

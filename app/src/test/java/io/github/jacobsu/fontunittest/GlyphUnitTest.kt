@@ -16,7 +16,7 @@ import org.junit.Rule
 
 
 class GlyphUnitTest {
-    lateinit var trueTypeFont : TrueTypeBuffer
+    lateinit var trueTypeFont : TrueTypeFont
     lateinit var xmlFontUnicodes : List<FontUnicode>
     lateinit var fontDigests : List<FontDigest>
 
@@ -43,7 +43,7 @@ class GlyphUnitTest {
 
         val fontBuffer = os.toByteArray().toList()
 
-        trueTypeFont = TrueTypeBuffer(fontBuffer)
+        trueTypeFont = TrueTypeFont(fontBuffer)
     }
 
     @Before
@@ -73,6 +73,20 @@ class GlyphUnitTest {
         val gson = Gson()
 
         fontDigests = gson.fromJson(InputStreamReader(fontInputStream), object : TypeToken<List<FontDigest>>() {}.type)
+    }
+
+    @Test
+    fun testTrueTypeFont() {
+        collector.checkThat("check TrueType's offset tables is not empty.",
+                true,
+                equalTo(trueTypeFont.offsetTables.isNotEmpty()))
+
+        trueTypeFont.offsetTables.forEach {
+            collector.checkThat("check TrueType's offset table's name should not by empty",
+                    true,
+                    equalTo(it.key.isNotEmpty()))
+
+        }
     }
 
     @Test
