@@ -95,6 +95,20 @@ class GlyphUnitTest {
     }
 
     @Test
+    fun testTTFRedundency() {
+        val glyphs = trueTypeFont.glyphs.filterNotNull()
+        (0 until glyphs.size - 1).forEach { index ->
+            val sameGlyphs = glyphs.subList(index + 1, glyphs.size - 1).filter { glyph ->
+                glyph.buffer == glyphs[index].buffer
+            }
+
+            collector.checkThat("check ttf redundency at index $index, digest ${glyphs[index].buffer.getMd5Digest().encodeHex()}",
+                    true,
+                    equalTo(sameGlyphs.isEmpty()))
+        }
+    }
+
+    @Test
     fun testFontMatch() {
         xmlFontUnicodes.forEach {fontUnicode ->
             val expectedDigest = fontDigests.find { it.name == fontUnicode.name }?.digest
