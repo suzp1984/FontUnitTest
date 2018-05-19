@@ -100,6 +100,9 @@ class GlyphUnitTest {
                 equalTo(trueTypeFont.glyphIndexedOffsets.size))
     }
 
+    /*
+     * The font icons in side xml file should not have any font name with same unicode value.
+     */
     @Test
     fun testFontXmlRedundency() {
         var redundencyNames = listOf<String>()
@@ -123,13 +126,19 @@ class GlyphUnitTest {
         }
     }
 
+    /*
+     * The size of font described in Xml should be match with the font counts inside the TTF file.
+     */
     @Test
-    fun testFontSize() {
+    fun testXmlTTFSizeMatch() {
         collector.checkThat("check ttf's glyph size: ",
                 trueTypeFont.glyphCount,
                 equalTo(xmlFontUnicodes.map { it.unicode }.toSet().size))
     }
 
+    /*
+     * the font inside the TTF should not has same buffer.
+     */
     @Test
     fun testTTFRedundency() {
         var redundencyIndex = listOf<Int>()
@@ -156,6 +165,31 @@ class GlyphUnitTest {
         }
     }
 
+    /*
+     * The xml file, describe the font unicode, and the json file, describe the font degist, should match each other.
+     */
+    @Test
+    fun testXmlAndJsonMatch() {
+        collector.checkThat("check the count of xml font and the count of font inside json sample: ",
+                xmlFontUnicodes.count(),
+                equalTo(fontDigests.count()))
+
+        xmlFontUnicodes.forEach { fontUnicode ->
+            collector.checkThat("font described in xml ${fontUnicode.name} : ${fontUnicode.unicode} shouldn't found any match digest inside json sample",
+                    true,
+                    equalTo(fontDigests.any { fontUnicode.name == it.name }))
+        }
+
+        fontDigests.forEach { fontDigist ->
+            collector.checkThat("font described in sample json ${fontDigist.name} shouldn't found any match font unicode inside xml",
+                    true,
+                    equalTo(xmlFontUnicodes.any { fontDigist.name == it.name }))
+        }
+    }
+
+    /*
+     * read the font from the TTF file according to the unicode described from the xml file, than compared with file digest read from the json sample.
+     */
     @Test
     fun testFontMatch() {
         xmlFontUnicodes.forEach {fontUnicode ->
