@@ -1,4 +1,4 @@
-package io.github.jacobsu.fontunittest
+package io.github.jacobsu.truetype
 
 import java.util.*
 
@@ -13,9 +13,10 @@ class TrueTypeFont(private val buffer: List<Byte>) {
         (0 until (numTables ?: 0)).map {
             val start = 12 + it * 16
             val tag = buffer.getStringFrom(start, 4) ?: ""
-            val table = Table(checkSum = buffer.getIntFrom(start + 4) ?: 0,
-                                offSet = buffer.getIntFrom(start + 8) ?: 0,
-                                length = buffer.getIntFrom(start + 12) ?: 0)
+            val table = Table(checkSum = buffer.getIntFrom(start + 4)
+                    ?: 0,
+                    offSet = buffer.getIntFrom(start + 8) ?: 0,
+                    length = buffer.getIntFrom(start + 12) ?: 0)
 
             tag to table
         }.toMap()

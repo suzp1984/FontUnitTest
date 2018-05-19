@@ -1,5 +1,6 @@
 package io.github.jacobsu.fontunittest
 
+import io.github.jacobsu.truetype.*
 import org.junit.Test
 
 import org.junit.Assert.*

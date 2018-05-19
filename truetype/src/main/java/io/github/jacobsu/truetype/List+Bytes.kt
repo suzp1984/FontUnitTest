@@ -1,4 +1,4 @@
-package io.github.jacobsu.fontunittest
+package io.github.jacobsu.truetype
 
 import java.nio.charset.Charset
 import java.security.MessageDigest
@@ -80,10 +80,10 @@ fun ByteArray.encodeHex(toLowerCase : Boolean = true) : String {
         ('A' .. 'F')
     }
 
-    return map {
+    return joinToString(separator = "") {
         "${chars.elementAt((240 and it.toUnsignedInt()) ushr 4)}" +
                 "${chars.elementAt(15 and it.toUnsignedInt())}"
-    }.joinToString(separator = "")
+    }
 }
 
 fun List<Byte>.encodeHex(toLowerCase: Boolean = true) : String {

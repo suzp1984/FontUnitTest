@@ -1,4 +1,4 @@
-package io.github.jacobsu.fontunittest
+package io.github.jacobsu.truetype
 
 data class FontUnicode(val name : String, val unicode : Int)
 
