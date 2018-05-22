@@ -1,6 +1,7 @@
-package io.github.jacobsu.truetype
+package io.github.jacobsu.truetypecli
 
 import com.google.gson.GsonBuilder
+import io.github.jacobsu.truetype.*
 import org.w3c.dom.NodeList
 import java.io.ByteArrayOutputStream
 import java.io.InputStream

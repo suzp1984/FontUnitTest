@@ -1,1 +1,1 @@
-include ':app', ':truetype'
+include ':app', ':truetype', ':truetypecli'
