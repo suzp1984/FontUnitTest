@@ -1,66 +1,45 @@
 package io.github.jacobsu.truetypecli
 
 import com.google.gson.GsonBuilder
+import com.xenomachina.argparser.ArgParser
+import com.xenomachina.argparser.mainBody
 import io.github.jacobsu.truetype.*
-import org.w3c.dom.NodeList
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.system.exitProcess
 
-fun main(args : Array<String>) {
-    println("Hello, world!")
+fun main(args : Array<String>) = mainBody {
 
-    val inputStream : InputStream = TrueTypeFont::class.java.classLoader.getResourceAsStream("src/main/assets/Font.ttf")
+    ArgParser(args).parseInto(::CmdArgs).run {
 
-    val byteArray = ByteArray(1024)
-    val os = ByteArrayOutputStream()
+        if (all) {
 
-    do {
-        val l = inputStream.read(byteArray)
+            val trueTypeFont = TrueTypeProvider.trueTypeFont
 
-        if (l == -1) {
-            break
-        }
+            val fontUnicodes = TrueTypeProvider.fontUnicodes
+            // generate font digest
 
-        os.write(byteArray, 0, l)
+            val fontDigets : List<FontDigest?> = fontUnicodes.map {
+                val digest = trueTypeFont.getGlyphByUnicode(it.unicode)?.buffer?.getMd5Digest()?.encodeHex()
+                digest?.let { str -> FontDigest(it.name, str) }
+            }
 
-    } while (true)
+            if (fontDigets.any() {it == null}) {
+                println("the digest can't be null")
+                exitProcess(-102)
+            }
 
-    val fontBuffer = os.toByteArray().toList()
-
-    val trueTypeFont = TrueTypeFont(fontBuffer)
-
-    val fontInputStream : InputStream  = FontUnicode::class.java.classLoader.getResourceAsStream("src/main/res/values/font.xml")
-    val xmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fontInputStream)
-    val fonts : NodeList = xmlDoc.getElementsByTagName("string")
-
-    val fontUnicodes : List<FontUnicode> = (0 until fonts.length).mapNotNull {
-        val node = fonts.item(it)
-        val name = node.attributes.getNamedItem("name").nodeValue
-        val unicode = node.textContent.let {
-            if (it.toCharArray().size == 1) {
-                it.first().toInt()
-            } else {
-                null
+            val gson = GsonBuilder().setPrettyPrinting().create()
+            println(gson.toJson(fontDigets.filterNotNull()))
+        } else {
+            unicode.decodeHex()?.let {
+                TrueTypeProvider.trueTypeFont.getGlyphByUnicode(it)?.let {
+                    println(it)
+                    println("unicode ${unicode.trimStart('0')}: glyph buffer = ${it.buffer.encodeHex()}")
+                    println("unicode ${unicode.trimStart('0')}: glyph digest = ${it.buffer.getMd5Digest().encodeHex()}")
+                }
             }
         }
 
-        unicode?.let { FontUnicode(name, unicode) }
+        return@run
     }
 
-    // generate font digest
-
-    val fontDigets : List<FontDigest?> = fontUnicodes.map {
-        val digest = trueTypeFont.getGlyphByUnicode(it.unicode)?.buffer?.getMd5Digest()?.encodeHex()
-        digest?.let { str -> FontDigest(it.name, str) }
-    }
-
-    if (fontDigets.any() {it == null}) {
-        println("the digest can't be null")
-        exitProcess(-102)
-    }
-
-    val gson = GsonBuilder().setPrettyPrinting().create()
-    println(gson.toJson(fontDigets.filterNotNull()))
 }
