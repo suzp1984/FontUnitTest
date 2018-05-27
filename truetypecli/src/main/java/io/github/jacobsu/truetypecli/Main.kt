@@ -18,18 +18,22 @@ fun main(args : Array<String>) = mainBody {
             // generate font digest
 
             val fontDigets : List<FontDigest?> = fontUnicodes.map {
-                val digest = trueTypeFont.getGlyphByUnicode(it.unicode)?.buffer?.getMd5Digest()?.encodeHex()
+                val digest = trueTypeFont.getGlyphByUnicode(it.unicode)
+                                    ?.buffer
+                                    ?.getMd5Digest()
+                                    ?.encodeHex()
+
                 digest?.let { str -> FontDigest(it.name, str) }
             }
 
-            if (fontDigets.any() {it == null}) {
+            if (fontDigets.any {it == null}) {
                 println("the digest can't be null")
                 exitProcess(-102)
             }
 
             val gson = GsonBuilder().setPrettyPrinting().create()
             println(gson.toJson(fontDigets.filterNotNull()))
-        } else {
+        } else if (unicode.isNotEmpty()) {
             unicode.decodeHex()?.let {
                 TrueTypeProvider.trueTypeFont.getGlyphByUnicode(it)?.let {
                     println(it)
