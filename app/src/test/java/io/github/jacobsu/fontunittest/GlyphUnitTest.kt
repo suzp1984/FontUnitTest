@@ -1,15 +1,12 @@
 package io.github.jacobsu.fontunittest
 
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import io.github.jacobsu.truetype.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Before
 import org.junit.Test
 import org.w3c.dom.NodeList
-import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import java.io.InputStreamReader
 import javax.xml.parsers.DocumentBuilderFactory
 import org.junit.rules.ErrorCollector
 import org.junit.Rule
@@ -27,52 +24,21 @@ class GlyphUnitTest {
     fun initGlypFont() {
         val inputStream : InputStream = javaClass.classLoader.getResourceAsStream("assets/Font.ttf")
 
-        val byteArray = ByteArray(1024)
-        val os = ByteArrayOutputStream()
-
-        do {
-            val l = inputStream.read(byteArray)
-
-            if (l == -1) {
-                break
-            }
-
-            os.write(byteArray, 0, l)
-
-        } while (true)
-
-        val fontBuffer = os.toByteArray().toList()
-
-        trueTypeFont = TrueTypeFont(fontBuffer)
+        trueTypeFont = TrueTypeFont(inputStream)
     }
 
     @Before
     fun readFontXml() {
         val fontInputStream : InputStream = javaClass.classLoader.getResourceAsStream("res/values/font.xml")
-        val xmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fontInputStream)
-        val fonts : NodeList = xmlDoc.getElementsByTagName("string")
 
-        xmlFontUnicodes = (0 until fonts.length).mapNotNull {
-            val node = fonts.item(it)
-            val name = node.attributes.getNamedItem("name").nodeValue
-            val unicode = node.textContent.let {
-                if (it.toCharArray().size == 1) {
-                    it.first().toInt()
-                } else {
-                    null
-                }
-            }
-
-            unicode?.let { FontUnicode(name, unicode) }
-        }
+        xmlFontUnicodes = getFontUnicodes(fontInputStream)
     }
 
     @Before
     fun readFontDigestFromJson() {
         val fontInputStream : InputStream  = javaClass.classLoader.getResourceAsStream("assets/font_digest.json")
-        val digestJson = Gson()
 
-        fontDigests = digestJson.fromJson(InputStreamReader(fontInputStream), object : TypeToken<List<FontDigest>>() {}.type)
+        fontDigests = getFontDigests(fontInputStream)
     }
 
     @Test

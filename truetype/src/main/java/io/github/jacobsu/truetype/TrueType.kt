@@ -1,8 +1,31 @@
 package io.github.jacobsu.truetype
 
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 import java.util.*
 
+private fun InputStream.getByteList() : List<Byte> {
+    val byteArray = ByteArray(1024)
+    val os = ByteArrayOutputStream()
+
+    do {
+        val l = read(byteArray)
+
+        if (l == -1) {
+            break
+        }
+
+        os.write(byteArray, 0, l)
+
+    } while (true)
+
+    return os.toByteArray().toList()
+}
+
 class TrueTypeFont(private val buffer: List<Byte>) {
+
+    constructor(inputStream: InputStream) : this(inputStream.getByteList())
+
     val scalarType by lazy { buffer.getIntFrom(0) }
     val numTables  by lazy { buffer.getShortFrom(4) }
     val searchRange by lazy { buffer.getShortFrom(6) }
